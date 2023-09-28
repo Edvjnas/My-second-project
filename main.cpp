@@ -1,0 +1,124 @@
+#include "mylib.h"
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <iomanip>
+#include <algorithm>
+#include <random>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    vector<Studentas> studentai;
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> distribution(1, 10);
+     int s;
+        cout << "Norite pazymius suvesti ar nuskaityti juos is failo?(Rasykite 1, jei norite pazymius suvesti, ir 2, jei norite juos nuskaityti is failo)"<< endl;
+        cin >> s;
+        if (s==2){
+            ifstream input("kursiokai.txt");
+            string pav;
+            getline(input, pav);
+            istringstream InputStringStream(pav);
+            vector<string> zodziai;
+            string zodis;
+            while (InputStringStream >> zodis) {
+                zodziai.push_back(zodis);
+                }
+            int ndsk= zodziai.size()-3;
+            Studentas naujasStudentas;
+
+    while (input >> naujasStudentas.vardas >> naujasStudentas.pavarde) {
+        int nd;
+        for(int i = 1; i <= ndsk; i++){
+            input >> nd;
+            naujasStudentas.namuDarbai.push_back(nd);
+        }
+        input >> naujasStudentas.egzaminas;
+
+        naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
+        naujasStudentas.galutinisBalasM = SkaiciuotiGalutiniBalaM(naujasStudentas);
+        studentai.push_back(naujasStudentas);
+    }
+        input.close();
+        }
+
+    if (s==1){
+    while (true) {
+        Studentas naujasStudentas;
+
+        cout << "Iveskite studento varda: ";
+        cin >> naujasStudentas.vardas;
+
+        cout << "Iveskite studento pavarde: ";
+        cin >> naujasStudentas.pavarde;
+
+        naujasStudentas.namuDarbai.clear();
+
+        int nd;
+        cout << "Iveskite namu darbu tarpinius rezultatus (-1, jei baigete ir -2, jei norite, kad namu darbu balai butu sugeneruoti atsitiktinai): ";
+        while (true) {
+            cin >> nd;
+            if (nd == -1) {
+                break;
+            }
+            if (nd == -2){
+                int n=0;
+                cout << "Iveskite kiek namu darbu balu dar sugeneruoti: " << endl;
+                cin >> n;
+                for (int i = 1; i <= n; i++){
+                   nd = distribution(mt);
+                   naujasStudentas.namuDarbai.push_back(nd);
+                   cout << "(" << nd << ")" << endl;
+                }
+                break;
+                }
+            naujasStudentas.namuDarbai.push_back(nd);
+        }
+
+        cout << "Iveskite egzamino rezultata (-2, jei norite, kad ji sugeneruotu atsitiktinai): ";
+        cin >> naujasStudentas.egzaminas;
+        if(naujasStudentas.egzaminas == -2){
+            naujasStudentas.egzaminas = distribution(mt);
+            cout << "(" << naujasStudentas.egzaminas << ")" << endl;
+        }
+
+        naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
+        naujasStudentas.galutinisBalasM = SkaiciuotiGalutiniBalaM(naujasStudentas);
+
+        studentai.push_back(naujasStudentas);
+
+        cout << "Ar norite ivesti dar vieno studento duomenis? (Taip/Ne): ";
+        string pasirinkimas;
+        cin >> pasirinkimas;
+        if (pasirinkimas != "Taip" && pasirinkimas != "taip") {
+            break;
+        }
+    }
+    }
+
+
+    cout << "Norite kad isspausdintu studentu vidurkius ar medianas? (Vidurkis/Mediana): ";
+    string pasirinkimas2;
+    cin >> pasirinkimas2;
+    cout << "\nGalutiniai rezultatai:\n";
+    if (pasirinkimas2 != "Vidurkis" && pasirinkimas2 != "vidurkis"){
+        cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(med)" << endl;
+        cout << "--------------------------------------------" << endl;
+        for (const Studentas& studentas : studentai) {
+            cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(15) << studentas.galutinisBalasM << endl;
+        }
+    }
+    else {
+        cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid)" << endl;
+        cout << "--------------------------------------------" << endl;
+        for (const Studentas& studentas : studentai) {
+        cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(15) << studentas.galutinisBalas << endl;
+        }
+    };
+
+    return 0;
+}
