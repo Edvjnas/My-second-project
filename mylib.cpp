@@ -45,3 +45,13 @@ double SkaiciuotiGalutiniBala(const Studentas& studentas) {
 bool SortVardas(const Studentas& a, const Studentas& b) {
     return a.vardas < b.vardas;
 }
+int NamuDarbuSk(const string& pav){
+    istringstream InputStringStream(pav);
+            vector<string> zodziai;
+            string zodis;
+            while (InputStringStream >> zodis) {
+                zodziai.push_back(zodis);
+                }
+            int ndsk= zodziai.size()-3;
+    return ndsk;
+}
