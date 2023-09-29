@@ -10,9 +10,9 @@
 using namespace std;
 
 struct Studentas {
-    std::string vardas;
-    std::string pavarde;
-    std::vector<int> namuDarbai;
+    string vardas;
+    string pavarde;
+    vector<int> namuDarbai;
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
 };
@@ -20,3 +20,4 @@ struct Studentas {
 double SkaiciuotiGalutiniBalaM(const Studentas& studentas);
 double SkaiciuotiGalutiniBala(const Studentas& studentas);
 bool SortVardas(const Studentas& a, const Studentas& b);
+int NamuDarbuSk(const string& pav);
