@@ -22,13 +22,7 @@ int main() {
             ifstream input("kursiokai.txt");
             string pav;
             getline(input, pav);
-            istringstream InputStringStream(pav);
-            vector<string> zodziai;
-            string zodis;
-            while (InputStringStream >> zodis) {
-                zodziai.push_back(zodis);
-                }
-            int ndsk= zodziai.size()-3;
+            int ndsk = NamuDarbuSk(pav);
             Studentas naujasStudentas;
 
     while (input >> naujasStudentas.vardas >> naujasStudentas.pavarde) {
@@ -44,7 +38,15 @@ int main() {
         studentai.push_back(naujasStudentas);
     }
         input.close();
+        sort(studentai.begin(), studentai.end(), SortVardas);
+        cout << "\nGalutiniai rezultatai:\n";
+        cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(25) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
+        cout << "----------------------------------------------------------------------------" << endl;
+        for (const Studentas& studentas : studentai) {
+            cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
+             studentas.galutinisBalas <<setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
         }
+    }
 
     if (s==1){
     while (true) {
@@ -98,9 +100,7 @@ int main() {
             break;
         }
     }
-    }
-
-
+    sort(studentai.begin(), studentai.end(), SortVardas);
     cout << "Norite kad isspausdintu studentu vidurkius ar medianas? (Vidurkis/Mediana): ";
     string pasirinkimas2;
     cin >> pasirinkimas2;
@@ -118,7 +118,9 @@ int main() {
         for (const Studentas& studentas : studentai) {
         cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(15) << studentas.galutinisBalas << endl;
         }
+    }
     };
 
     return 0;
 }
+
