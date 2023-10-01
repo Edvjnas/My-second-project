@@ -1,3 +1,4 @@
+
 #include "mylib.h"
 #include <iostream>
 #include <cmath>
@@ -55,3 +56,121 @@ int NamuDarbuSk(const string& pav){
             int ndsk= zodziai.size()-3;
     return ndsk;
 }
+void klaida(int &a){
+    do{
+        try{
+                    if (cin.fail()) {
+                            throw runtime_error("Ivedete ne sveikaji skaiciu. ");
+                    }
+                    if (a < -2 || a > 10) {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta: ";
+                    cin >> a;
+                }
+        }
+        while (cin.fail() == true || a < -2 || a > 10);
+    }
+
+    void klaida1(int &a){
+    do{
+        try{
+                    if (cin.fail()) {
+                            throw runtime_error("Ivedete ne sveikaji skaiciu. ");
+                    }
+                    if (a < -2 || a > 10 || a == -1) {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta: ";
+                    cin >> a;
+                }
+        }
+        while (cin.fail() == true || a == -1 || a > 10 || a < -2);
+    }
+
+    void klaida2(int &a){
+    do{
+        try{
+                    if (cin.fail()) {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+                    if (a < 1 || a > 2) {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta (1 arba 2): ";
+                    cin >> a;
+                }
+        }
+        while (cin.fail() == true || a < 1 || a > 2);
+    }
+
+     void klaida3(int &a){
+    do{
+        try{
+                    if (cin.fail() || a < 0) {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta: ";
+                    cin >> a;
+                }
+        }
+        while (cin.fail() == true || a < 0);
+    }
+
+    void klaida4(string &a){
+    do{
+        try{
+                    if (a != "taip" && a != "ne" && a != "Taip" && a != "Ne" && a != "TAIP" && a != "NE") {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta: ";
+                    cin >> a;
+                }
+        }
+        while (a != "taip" && a != "ne" && a != "Taip" && a != "Ne" && a != "TAIP" && a != "NE");
+    }
+
+    void klaida5(string &a){
+    do{
+        try{
+                    if (a != "Vidurkis" && a != "VIDURKIS" && a != "vidurkis" && a != "Mediana" && a != "mediana" && a != "MEDIANA") {
+                            throw runtime_error("Ivedete netinkamus duomenis. ");
+                    }
+        }
+        catch (const runtime_error& e){
+                    cout << e.what();
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Veskite duomenis dar karta: ";
+                    cin >> a;
+                }
+        }
+        while (a != "Vidurkis" && a != "VIDURKIS" && a != "vidurkis" && a != "Mediana" && a != "mediana" && a != "MEDIANA");
+    }
+
+
