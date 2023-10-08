@@ -1,12 +1,4 @@
 #include "mylib.h"
-#include <iostream>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <iomanip>
-#include <algorithm>
-#include <random>
-#include <fstream>
 
 using namespace std;
 
@@ -28,11 +20,12 @@ int main() {
                     string pav;
                     getline(input, pav);
                     int ndsk = NamuDarbuSk(pav);
-                    Studentas naujasStudentas;
 
-    while (input >> naujasStudentas.vardas >> naujasStudentas.pavarde) {
-        int nd;
+    while (!input.eof()) {
+        Studentas naujasStudentas;
+        input >> naujasStudentas.vardas >> naujasStudentas.pavarde;
         for(int i = 1; i <= ndsk; i++){
+            int nd;
             input >> nd;
             naujasStudentas.namuDarbai.push_back(nd);
         }
