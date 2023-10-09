@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <random>
 #include <fstream>
-
 using namespace std;
 
 struct Studentas {
@@ -27,3 +26,8 @@ void klaida2(int &a);
 void klaida3(int &a);
 void klaida4(string &a);
 void klaida5(string &a);
+void GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas);
+string GeneruotiVarda(int a);
+string GeneruotiPavarde(int a);
+
+
