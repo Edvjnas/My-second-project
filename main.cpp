@@ -8,16 +8,17 @@ int main() {
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> distribution(1, 10);
      int s;
+     GeneruotiStudentus(1000, "rez3.txt");
         cout << "Norite pazymius suvesti ar nuskaityti juos is failo?(Rasykite 1, jei norite pazymius suvesti, ir 2, jei norite juos nuskaityti is failo)"<< endl;
         cin >> s;
         klaida2(s);
         if (s==2){
-            ifstream input("kursiokai1.txt");
+            ifstream input("1.txt");
             if (!input.is_open()) {
                 cout << "Nepavyko atidaryti failo..." << endl;
             }
             else {
-                    string pav;
+                string pav;
                     getline(input, pav);
                     int ndsk = NamuDarbuSk(pav);
 
@@ -34,18 +35,27 @@ int main() {
         naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
         naujasStudentas.galutinisBalasM = SkaiciuotiGalutiniBalaM(naujasStudentas);
         studentai.push_back(naujasStudentas);
-    }
-        input.close();
-        sort(studentai.begin(), studentai.end(), SortVardas);
-        cout << "\nGalutiniai rezultatai:\n";
-        cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(25) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
-        cout << "----------------------------------------------------------------------------" << endl;
-        for (const Studentas& studentas : studentai) {
-            cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
-             studentas.galutinisBalas <<setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
+
+            }
+
+            input.close();
+
+            sort(studentai.begin(), studentai.end(), SortVardas);
+
+            ofstream output("4rez.txt");
+            output << "\nGalutiniai rezultatai:\n";
+            output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
+            output << "----------------------------------------------------------------------------" << endl;
+            for (const Studentas& studentas : studentai) {
+                output << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
+                    studentas.galutinisBalas << setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
+            }
+            output.close();
         }
     }
-}
+
+
+
 
     if (s==1){
     while (true) {
@@ -123,6 +133,11 @@ int main() {
         }
     }
     };
+
+
+    return 0;
+}
+
 
     return 0;
 }
