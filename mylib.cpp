@@ -1,4 +1,3 @@
-
 #include "mylib.h"
 #include <iostream>
 #include <cmath>
@@ -172,5 +171,47 @@ void klaida(int &a){
         }
         while (a != "Vidurkis" && a != "VIDURKIS" && a != "vidurkis" && a != "Mediana" && a != "mediana" && a != "MEDIANA");
     }
+
+    string GeneruotiVarda(int a) {
+        return "Vardas" + to_string(a);
+}
+    string GeneruotiPavarde(int a) {
+        return " Pavarde" + to_string(a);
+}
+
+// Funkcija, kuri sugeneruoja atsitiktinius duomenis ir iraso i faila
+    void GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas) {
+        ofstream output(failoPavadinimas);
+        std::random_device rd;
+        std::mt19937 mt(rd());
+        std::uniform_int_distribution<int> distribution(1, 10);
+        int namuDarbuSkaicius = 10;
+
+        output << left << setw(20) << " Vardas" << setw(20) << "  Pavarde";
+        for (int p = 1; p <= namuDarbuSkaicius; p++){
+            output << setw(10) << "ND" + to_string(p);
+        }
+        output << setw(10) << "Egz" << endl;
+        for (int i = 1; i <= studentuSkaicius; ++i) {
+            Studentas naujasStudentas;
+            naujasStudentas.vardas = GeneruotiVarda(i);
+            naujasStudentas.pavarde = GeneruotiPavarde(i);
+            naujasStudentas.namuDarbai.reserve(namuDarbuSkaicius);
+            for (int j = 0; j < namuDarbuSkaicius; ++j) {
+                naujasStudentas.namuDarbai.push_back(distribution(mt));
+            }
+            naujasStudentas.egzaminas = distribution(mt);
+            output << left << setw(20) << naujasStudentas.vardas << setw(20) << naujasStudentas.pavarde;
+            for (const int& pazymys : naujasStudentas.namuDarbai) {
+                output << setw(10) << pazymys;
+            }
+            output << setw(10) << naujasStudentas.egzaminas << endl;
+        }
+        output.close();
+    }
+
+
+
+
 
 
