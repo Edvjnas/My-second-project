@@ -302,6 +302,25 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
         }
     }
 }
+
+void SortStudentai(const vector<Studentas>& studentai, const string& genijuFailas, const string& vargsiukuFailas) {
+        ofstream outputGenijai(genijuFailas);
+        ofstream outputVargsiukai(vargsiukuFailas);
+
+        outputGenijai << left << setw(15) << " Vardas" << setw(15) << "  Pavarde" << setw(15) << "Galutinis Balas" << endl;
+        outputVargsiukai << left << setw(15) << " Vardas" << setw(15) << "  Pavarde" << setw(15) << "Galutinis Balas" << endl;
+
+        for (const Studentas& studentas : studentai) {
+            if (studentas.galutinisBalas >= 5.0) {
+                outputGenijai << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
+        }   else {
+                outputVargsiukai << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
+            }
+        }
+        outputGenijai.close();
+        outputVargsiukai.close();
+}
+
     string GeneruotiVarda(int a) {
         return "Vardas" + to_string(a);
 }
@@ -309,7 +328,7 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
         return " Pavarde" + to_string(a);
 }
 
-    void GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
+   vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
         vector<Studentas> studentai;
         ofstream output(failoPavadinimas);
         std::random_device rd;
@@ -339,7 +358,12 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
             output << setw(10) << naujasStudentas.egzaminas << endl;
         }
         output.close();
+    return studentai;
     }
+
+
+
+
 
 
 
