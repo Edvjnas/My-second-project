@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <random>
 #include <fstream>
+#include <chrono>
 using namespace std;
 
 struct Studentas {
@@ -28,7 +29,8 @@ void klaida4(string &a);
 void klaida5(string &a);
 void IvestiDuomenis(vector<Studentas>& studentai);
 void SpausdintiRezultatus(const vector<Studentas>& studentai);
-void GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas);
+void SortStudentai(const vector<Studentas>& studentai, const string& genijuFailas, const string& vargsiukuFailas);
+vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius);
 string GeneruotiVarda(int a);
 string GeneruotiPavarde(int a);
 
