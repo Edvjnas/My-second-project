@@ -26,6 +26,8 @@ void klaida2(int &a);
 void klaida3(int &a);
 void klaida4(string &a);
 void klaida5(string &a);
+void IvestiDuomenis(vector<Studentas>& studentai);
+void SpausdintiRezultatus(const vector<Studentas>& studentai);
 void GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas);
 string GeneruotiVarda(int a);
 string GeneruotiPavarde(int a);
