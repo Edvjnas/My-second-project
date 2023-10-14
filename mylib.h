@@ -34,4 +34,7 @@ std::pair<std::vector<Studentas>, std::vector<Studentas>>  RikiuotiStudentus(con
 vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius);
 string GeneruotiVarda(int a);
 string GeneruotiPavarde(int a);
+void FailoNuskaitymas(const string& failoPavadinimas, vector<Studentas>& studentai, int namuDarbuSkaicius);
+bool sortDidejant(const Studentas& a, const Studentas& b);
+bool sortMazejant(const Studentas& a, const Studentas& b);
 
