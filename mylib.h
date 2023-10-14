@@ -29,9 +29,9 @@ void klaida4(string &a);
 void klaida5(string &a);
 void IvestiDuomenis(vector<Studentas>& studentai);
 void SpausdintiRezultatus(const vector<Studentas>& studentai);
-void SortStudentai(const vector<Studentas>& studentai, const string& genijuFailas, const string& vargsiukuFailas);
+void SpausdintiStudentus(const vector<Studentas>& studentai, const string& failoPavadinimas);
+std::pair<std::vector<Studentas>, std::vector<Studentas>>  RikiuotiStudentus(const vector<Studentas>& studentai);
 vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius);
 string GeneruotiVarda(int a);
 string GeneruotiPavarde(int a);
-
 
