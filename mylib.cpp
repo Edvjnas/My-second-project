@@ -306,7 +306,7 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
             vargsiukai.push_back(studentas);
         }
     }
-     return std::make_pair(genijai, vargsiukai);
+     return make_pair(genijai, vargsiukai);
    }
 
    void SpausdintiStudentus(const vector<Studentas>& studentai, const string& failoPavadinimas) {
@@ -347,7 +347,6 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
                 naujasStudentas.namuDarbai.push_back(distribution(mt));
             }
             naujasStudentas.egzaminas = distribution(mt);
-            naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
             studentai.push_back(naujasStudentas);
             output << left << setw(20) << naujasStudentas.vardas << setw(20) << naujasStudentas.pavarde;
             for (const int& pazymys : naujasStudentas.namuDarbai) {
@@ -359,7 +358,35 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
     return studentai;
     }
 
+    void FailoNuskaitymas(const string& failoPavadinimas, vector<Studentas>& studentai, int namuDarbuSkaicius){
+        ifstream input(failoPavadinimas);
+            if (!input.is_open()) {
+                cout << "Nepavyko atidaryti failo..." << endl;
+            }
+            string pav;
+            getline(input, pav);
+        while (!input.eof()) {
+            Studentas naujasStudentas;
+            input >> naujasStudentas.vardas >> naujasStudentas.pavarde;
+            for(int i = 1; i <= namuDarbuSkaicius; i++){
+                int nd;
+                input >> nd;
+                naujasStudentas.namuDarbai.push_back(nd);
+            }
+            input >> naujasStudentas.egzaminas;
+            naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
+            studentai.push_back(naujasStudentas);
+        }
+        input.close();
+    }
 
+    bool sortDidejant(const Studentas& a, const Studentas& b) {
+    return a.galutinisBalas < b.galutinisBalas;
+}
+
+    bool sortMazejant(const Studentas& a, const Studentas& b) {
+        return a.galutinisBalas > b.galutinisBalas;
+}
 
 
 
