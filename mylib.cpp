@@ -1,12 +1,4 @@
 #include "mylib.h"
-#include <iostream>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <iomanip>
-#include <algorithm>
-#include <random>
-#include <fstream>
 
 using namespace std;
 
@@ -172,7 +164,7 @@ void klaida(int &a){
         while (a != "Vidurkis" && a != "VIDURKIS" && a != "vidurkis" && a != "Mediana" && a != "mediana" && a != "MEDIANA");
     }
 
-     void IvestiDuomenis(vector<Studentas>& studentai) {
+    void IvestiDuomenis(vector<Studentas>& studentai) {
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> distribution(1, 10);
@@ -303,22 +295,28 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
     }
 }
 
-void SortStudentai(const vector<Studentas>& studentai, const string& genijuFailas, const string& vargsiukuFailas) {
-        ofstream outputGenijai(genijuFailas);
-        ofstream outputVargsiukai(vargsiukuFailas);
+   pair<vector<Studentas>, vector<Studentas>> RikiuotiStudentus(const vector<Studentas>& studentai) {
+    vector<Studentas> genijai;
+    vector<Studentas> vargsiukai;
 
-        outputGenijai << left << setw(15) << " Vardas" << setw(15) << "  Pavarde" << setw(15) << "Galutinis Balas" << endl;
-        outputVargsiukai << left << setw(15) << " Vardas" << setw(15) << "  Pavarde" << setw(15) << "Galutinis Balas" << endl;
-
-        for (const Studentas& studentas : studentai) {
-            if (studentas.galutinisBalas >= 5.0) {
-                outputGenijai << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
-        }   else {
-                outputVargsiukai << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
-            }
+    for (const Studentas& studentas : studentai) {
+        if (studentas.galutinisBalas >= 5.0) {
+            genijai.push_back(studentas);
+        } else {
+            vargsiukai.push_back(studentas);
         }
-        outputGenijai.close();
-        outputVargsiukai.close();
+    }
+     return std::make_pair(genijai, vargsiukai);
+   }
+
+   void SpausdintiStudentus(const vector<Studentas>& studentai, const string& failoPavadinimas) {
+    ofstream output(failoPavadinimas);
+
+    for (const Studentas& studentas : studentai) {
+        output << left << setw(20) << studentas.vardas << setw(20) << studentas.pavarde << setw(20) << studentas.galutinisBalas << endl;
+    }
+
+    output.close();
 }
 
     string GeneruotiVarda(int a) {
@@ -328,7 +326,7 @@ void SortStudentai(const vector<Studentas>& studentai, const string& genijuFaila
         return " Pavarde" + to_string(a);
 }
 
-   vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
+    vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
         vector<Studentas> studentai;
         ofstream output(failoPavadinimas);
         std::random_device rd;
@@ -360,9 +358,6 @@ void SortStudentai(const vector<Studentas>& studentai, const string& genijuFaila
         output.close();
     return studentai;
     }
-
-
-
 
 
 
