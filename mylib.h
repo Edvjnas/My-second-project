@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include <cmath>
 #include <string>
 #include <vector>
@@ -12,7 +13,7 @@ using namespace std;
 struct Studentas {
     string vardas;
     string pavarde;
-    vector<int> namuDarbai;
+    list<int> namuDarbai;
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
 };
@@ -27,14 +28,13 @@ void klaida2(int &a);
 void klaida3(int &a);
 void klaida4(string &a);
 void klaida5(string &a);
-void IvestiDuomenis(vector<Studentas>& studentai);
-void SpausdintiRezultatus(const vector<Studentas>& studentai);
-void SpausdintiStudentus(const vector<Studentas>& studentai, const string& failoPavadinimas);
-std::pair<std::vector<Studentas>, std::vector<Studentas>>  RikiuotiStudentus(const vector<Studentas>& studentai);
-vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius);
+void IvestiDuomenis(list<Studentas>& studentai);
+void SpausdintiRezultatus(const list<Studentas>& studentai);
+void SpausdintiStudentus(const list<Studentas>& studentai, const string& failoPavadinimas);
+pair<list<Studentas>, list<Studentas>>  RikiuotiStudentus(const list<Studentas>& studentai);
+list<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius);
 string GeneruotiVarda(int a);
 string GeneruotiPavarde(int a);
-void FailoNuskaitymas(const string& failoPavadinimas, vector<Studentas>& studentai, int namuDarbuSkaicius);
+void FailoNuskaitymas(const string& failoPavadinimas, list<Studentas>& studentai, int namuDarbuSkaicius);
 bool sortDidejant(const Studentas& a, const Studentas& b);
 bool sortMazejant(const Studentas& a, const Studentas& b);
-
