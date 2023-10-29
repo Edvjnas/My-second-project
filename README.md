@@ -1,5 +1,5 @@
 # My-first-project  
-v0.3 test:  
+v0.3 test (list konteineris):  
 1000 irasu testo laikas: 0.0156278  
 1000 irasu testo laikas: 0.0156341  
 1000 irasu testo laikas: 0.0156246  
@@ -26,7 +26,7 @@ vidurkis: 14.0935
 vidurkis: 265.561  
 (rūšiavimas į dvi grupes užtruko labai ilgai ~160s)  
   
-v0.2 test  
+v0.2 test (vector konteineris): 
   
 1000 irasu testo laikas: 0.0139497  
 1000 irasu testo laikas: 0.0131364  
@@ -52,5 +52,13 @@ vidurkis: 13.6326
 10000000 irasu testo laikas: 126.875  
 10000000 irasu testo laikas: 123.647  
 vidurkis: 137.55933  
-  
+ 
+| List                | Vector              | Studentu sk. (10 namu darbu)|
+|---------------------|---------------------|---------------|
+| 0.0156288  | 0.013347733| 1000          |
+| 0.205169   | 0.124816333| 10000         |
+| 1.56550    | 1.2025933  | 100000        |
+| 14.0935    | 13.6326    | 1000000       |
+| 265.561    | 137.55933  | 10000000      |
+
 Išvados: Vector konteineris šiuo atveju veikia greičiau nei list konteineris. Rūšiavimas užtruko daug ilgiau su list konteineriu, nes list turi iteruoti per visą sąrašą, kad pasiektų indeksą, o vector konteineris - ne. 
