@@ -9,15 +9,25 @@ int main() {
     /*vector<Studentas> studentai;
     IvestiDuomenis(studentai);*/
 
-    int n = 10;
+
     int test = 3;
     list<Studentas> studentai;
 
-    /*GeneruotiStudentus(1000, "1000.txt", n);
-    GeneruotiStudentus(10000, "10000.txt", n);
-    GeneruotiStudentus(100000, "100000.txt", n);
-    GeneruotiStudentus(1000000, "1000000.txt", n);
-    GeneruotiStudentus(10000000, "10000000.txt", n);*/
+    int b;
+    int n;
+
+    cout << "Jei norite is naujo generuoti failus, rasykite 1: " 
+    cin >> b;
+
+    if (b==1){
+        cout << "Kiek namu darbu norite sugeneruoti? ";
+        cin >> n;
+     GeneruotiStudentus(1000, "1000.txt", n);
+     GeneruotiStudentus(10000, "10000.txt", n);
+     GeneruotiStudentus(100000, "100000.txt", n);
+     GeneruotiStudentus(1000000, "1000000.txt", n);
+     GeneruotiStudentus(10000000, "10000000.txt", n);
+    }
 
     pair<list<Studentas>, list<Studentas>> sortedStudents = RikiuotiStudentus(studentai);
 
