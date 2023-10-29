@@ -83,6 +83,8 @@ int main() {
     //cout << i << " irasu testo laiku vidurkis: " << vidurkis.count() << endl;
     //cout << endl;
    // }
+   
+   cout << "Studento objekto adresas List konteineryje: " << &studentai.back() << endl;
 
 
     return 0;
