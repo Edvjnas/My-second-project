@@ -53,4 +53,4 @@ vidurkis: 13.6326
 10000000 irasu testo laikas: 123.647  
 vidurkis: 137.55933  
   
-Išvados: Vector konteineris šiuo atveju veikia greičiau nei list konteineris.
+Išvados: Vector konteineris šiuo atveju veikia greičiau nei list konteineris. Rūšiavimas užtruko daug ilgiau su list konteineriu, nes list turi iteruoti per visą sąrašą, kad pasiektų indeksą, o vector konteineris - ne. 
