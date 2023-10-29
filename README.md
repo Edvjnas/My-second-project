@@ -1,4 +1,9 @@
 # My-first-project  
+Sistemos parametrai:  
+CPU   
+Ram 8 gb  
+SSD 256gb  
+
 v0.3 test (list konteineris):  
 1000 irasu testo laikas: 0.0156278  
 1000 irasu testo laikas: 0.0156341  
