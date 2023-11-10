@@ -1,6 +1,6 @@
 # My-first-project  
 Sistemos parametrai:  
-CPU   
+CPU Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz   1.19 GHz  
 Ram 8 gb  
 SSD 256gb  
 
