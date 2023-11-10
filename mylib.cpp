@@ -311,9 +311,10 @@ void SpausdintiRezultatus(const vector<Studentas>& studentai) {
 
    void SpausdintiStudentus(const vector<Studentas>& studentai, const string& failoPavadinimas) {
     ofstream output(failoPavadinimas);
+     output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid)" << endl;
 
     for (const Studentas& studentas : studentai) {
-        output << left << setw(20) << studentas.vardas << setw(20) << studentas.pavarde << setw(20) << studentas.galutinisBalas << endl;
+        output << left << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
     }
 
     output.close();
