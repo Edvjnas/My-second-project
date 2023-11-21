@@ -80,5 +80,3 @@ bool sortMazejant(const T& a, const T& b);
 
 template <typename T>
 void Testavimas (T& studentai);
-
-
