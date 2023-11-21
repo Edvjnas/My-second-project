@@ -363,6 +363,16 @@ std::pair<T, T> RikiuotiStudentus2(T& studentai) {
 
     return std::make_pair(studentai, vargsiukai);
 }
+template <typename T>
+pair<T, T> RikiuotiStudentus3(T& studentai) {
+    auto partitionIter = partition(studentai.begin(), studentai.end(),
+        [](const auto& studentas) { return studentas.galutinisBalas >= 5.0; });
+
+    T genijai(studentai.begin(), partitionIter);
+    T vargsiukai(partitionIter, studentai.end());
+
+    return make_pair(genijai, vargsiukai);
+}
     template <typename T>
    void SpausdintiStudentus(const T& studentai, const string& failoPavadinimas) {
     ofstream output(failoPavadinimas);
@@ -461,7 +471,7 @@ void Testavimas(T& studentai) {
         sortingFunction = SortVardas;
     }
 
-    for (int i = 10000000; i <= 10000000; i = i * 10) {
+    for (int i = 1000000; i <= 1000000; i = i * 10) {
         T studentaiContainer;
         chrono::duration<double> suma = chrono::duration<double>::zero();
         auto start = std::chrono::high_resolution_clock::now();
@@ -478,7 +488,7 @@ void Testavimas(T& studentai) {
         }
 
         start = std::chrono::high_resolution_clock::now();
-        pair<T, T> sortedStudents = RikiuotiStudentus2(studentaiContainer);
+        pair<T, T> sortedStudents = RikiuotiStudentus1(studentaiContainer);
         T genijai = sortedStudents.first;
         T vargsiukai = sortedStudents.second;
         end = std::chrono::high_resolution_clock::now();
@@ -513,6 +523,7 @@ template void Testavimas(std::list<Studentas>&);
 template void IvestiDuomenis(std::vector<Studentas>&);
 
 template void IvestiDuomenis(std::list<Studentas>&);
+
 
 
 
