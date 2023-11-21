@@ -1,6 +1,15 @@
 #include "mylib.h"
 
 using namespace std;
+
+template <typename T>
+    bool sortDidejant(const T& a, const T& b) {
+    return a.galutinisBalas < b.galutinisBalas;
+}
+    template <typename T>
+    bool sortMazejant(const T& a, const T& b) {
+        return a.galutinisBalas > b.galutinisBalas;
+}
 template <typename T>
 double SkaiciuotiGalutiniBalaM(const T& studentas) {
     if (studentas.namuDarbai.empty()) {
@@ -175,6 +184,19 @@ void klaida(int &a){
         cout << "Norite pazymius suvesti ar nuskaityti juos is failo?(Rasykite 1, jei norite pazymius suvesti, ir 2, jei norite juos nuskaityti is failo)"<< endl;
         cin >> s;
         klaida2(s);
+        cout << "Pagal koki parametra norite rusiuoti? |1.Didejant | 2.Mazejant | 3.Vardas | (Rasykite tik skaiciuka)" << endl;
+    int c;
+    cin >> c;
+
+    auto sortingFunction = sortDidejant<Studentas>;
+    if (c == 1) {
+        sortingFunction = sortDidejant;
+    } else if (c == 2) {
+        sortingFunction = sortMazejant;
+    } else if (c == 3) {
+        sortingFunction = SortVardas;
+    }
+
         if (s==2){
             ifstream input("2.txt");
             if (!input.is_open()) {
@@ -202,19 +224,26 @@ void klaida(int &a){
             }
 
             input.close();
-            sort(studentai.begin(), studentai.end(), SortVardas);
+           if constexpr (std::is_same<T, std::vector<Studentas>>::value) {
+    cout << "Objekto adresas su vector: " << &studentai.back() << endl;
+    std::sort(studentai.begin(), studentai.end(), sortingFunction);
+} else if constexpr (std::is_same<T, std::list<Studentas>>::value) {
+    cout << "Objekto adresas su list: " << &studentai.back() << endl;
+    studentai.sort(sortingFunction);
+}
 
-            ofstream output("4rez.txt");
-            output << "\nGalutiniai rezultatai:\n";
-            output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
-            output << "----------------------------------------------------------------------------" << endl;
-            for (const Studentas& studentas : studentai) {
-                output << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
-                    studentas.galutinisBalas << setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
+
+ofstream output("4rez.txt");
+output << "\nGalutiniai rezultatai:\n";
+output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
+output << "----------------------------------------------------------------------------" << endl;
+for (const Studentas& studentas : studentai) {
+    output << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
+        studentas.galutinisBalas << setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
+}
+output.close();
             }
-            output.close();
         }
-    }
 
     if (s==1){
     while (true) {
@@ -271,7 +300,13 @@ void klaida(int &a){
             break;
         }
     }
-    sort(studentai.begin(), studentai.end(), SortVardas);
+    if constexpr (std::is_same<T, std::vector<Studentas>>::value) {
+    cout << "Objekto adresas su vector: " << &studentai.back() << endl;
+    std::sort(studentai.begin(), studentai.end(), sortingFunction);
+} else if constexpr (std::is_same<T, std::list<Studentas>>::value) {
+    cout << "Objekto adresas su list: " << &studentai.back() << endl;
+    studentai.sort(sortingFunction);
+        }
     SpausdintiRezultatus(studentai);
     }
     }
@@ -299,7 +334,7 @@ void SpausdintiRezultatus(const T& studentai) {
     }
 }
 template <typename T>
-pair<T, T> RikiuotiStudentus(const T& studentai) {
+pair<T, T> RikiuotiStudentus1(const T& studentai) {
     T genijai;
     T vargsiukai;
 
@@ -311,6 +346,22 @@ pair<T, T> RikiuotiStudentus(const T& studentai) {
         }
     }
     return make_pair(genijai, vargsiukai);
+}
+template <typename T>
+std::pair<T, T> RikiuotiStudentus2(T& studentai) {
+    T vargsiukai;
+    auto it = studentai.begin();
+
+    while (it != studentai.end()) {
+        if (it->galutinisBalas < 5.0) {
+            vargsiukai.push_back(*it);
+            it = studentai.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
+    return std::make_pair(studentai, vargsiukai);
 }
     template <typename T>
    void SpausdintiStudentus(const T& studentai, const string& failoPavadinimas) {
@@ -384,14 +435,6 @@ pair<T, T> RikiuotiStudentus(const T& studentai) {
         }
         input.close();
     }
-    template <typename T>
-    bool sortDidejant(const T& a, const T& b) {
-    return a.galutinisBalas < b.galutinisBalas;
-}
-    template <typename T>
-    bool sortMazejant(const T& a, const T& b) {
-        return a.galutinisBalas > b.galutinisBalas;
-}
 template <typename T>
 void Testavimas(T& studentai) {
     int n = 10;
@@ -429,15 +472,13 @@ void Testavimas(T& studentai) {
         cout << i << " studentu nuskaitymas is failo: " << diff.count() << endl;
 
         if constexpr (std::is_same<T, std::vector<Studentas>>::value) {
-            cout << "Objekto adresas su vector: " << &studentaiContainer.back() << endl;
             std::sort(studentaiContainer.begin(), studentaiContainer.end(), sortingFunction);
         } else if constexpr (std::is_same<T, std::list<Studentas>>::value) {
-            cout << "Objekto adresas su list: " << &studentaiContainer.back() << endl;
             studentaiContainer.sort(sortingFunction);
         }
 
         start = std::chrono::high_resolution_clock::now();
-        pair<T, T> sortedStudents = RikiuotiStudentus(studentaiContainer);
+        pair<T, T> sortedStudents = RikiuotiStudentus2(studentaiContainer);
         T genijai = sortedStudents.first;
         T vargsiukai = sortedStudents.second;
         end = std::chrono::high_resolution_clock::now();
@@ -468,6 +509,10 @@ void Testavimas(T& studentai) {
 template void Testavimas(std::vector<Studentas>&);
 
 template void Testavimas(std::list<Studentas>&);
+
+template void IvestiDuomenis(std::vector<Studentas>&);
+
+template void IvestiDuomenis(std::list<Studentas>&);
 
 
 
