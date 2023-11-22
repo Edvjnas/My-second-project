@@ -152,6 +152,24 @@ vidurkis: 88.1131
 | -    | 8.676686    | 1000000       |
 | -    | 88.1131    | 10000000      |
 
+Vector konteineris:  
+| 1 Strategija               | 2 Strategija            | 3 Strategija| Studentu sk. (10 namu darbu) |
+|---------------|----------------|---------------|-----------|
+|0.013347733| 0.038605 | 0.012904433| 1000          |
+| 0.124816333 | 2.4047267|  0.0921558| 10000         |
+| 1.2025933 | 239.441 |0.8282077  | 100000        |
+| 13.6326 | 9.56848 | 8.676686    | 1000000       |
+| 137.55933   | 91.2267 | 88.1131    | 10000000      |
+
+List konteineris:  
+| 1 Strategija               | 2 Strategija            | 3 Strategija| Studentu sk. (10 namu darbu) |
+|---------------|----------------|---------------|-----------|
+|0.0156288|  0.0125738 | -| 1000          |
+| 0.205169 | 0.1011913|  -| 10000         |
+| 1.56550 | 0.867793 |- | 100000        |
+| 14.0935 | - | -| 1000000       |
+| 265.561   | - | -   | 10000000      |  
+
 Išvados:
 2 strategijos list konteineris veikia greičiausiai, keliom sekundėm greičiau už 1 strategijos vector konteinerį.
 2 strategijos vector konteineris veikia gerokai lėčiau, nes ištrynus elementą, 
