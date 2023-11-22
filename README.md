@@ -4,7 +4,8 @@ CPU Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz   1.19 GHz
 Ram 8 gb  
 SSD 256gb  
 
-v0.3 test (list konteineris):  
+1 strategija:
+(list konteineris):  
 1000 irasu testo laikas: 0.0156278  
 1000 irasu testo laikas: 0.0156341  
 1000 irasu testo laikas: 0.0156246  
@@ -31,7 +32,7 @@ vidurkis: 14.0935
 vidurkis: 265.561  
 (rūšiavimas į dvi grupes užtruko labai ilgai ~160s)  
   
-v0.2 test (vector konteineris): 
+(vector konteineris): 
   
 1000 irasu testo laikas: 0.0139497  
 1000 irasu testo laikas: 0.0131364  
@@ -66,4 +67,60 @@ vidurkis: 137.55933
 | 14.0935    | 13.6326    | 1000000       |
 | 265.561    | 137.55933  | 10000000      |
 
-Išvados: Vector konteineris šiuo atveju veikia greičiau nei list konteineris. Rūšiavimas užtruko daug ilgiau su list konteineriu, nes list turi iteruoti per visą sąrašą, kad pasiektų indeksą, o vector konteineris - ne. 
+2 Strategija:
+vector
+1000 irasu testo laikas: 0.0312456
+1000 irasu testo laikas: 0.0377093
+1000 irasu testo laikas: 0.0468611
+vidurkis: 0.038605
+
+10000 irasu testo laikas: 2.40522
+10000 irasu testo laikas: 2.3809
+10000 irasu testo laikas: 2.42806
+vidurkis: 2.4047267
+
+100000 irasu testo laikas: 239.441 (Rikiavimas truko 238.674)
+1000000 irasu testo laikas: -
+10000000 irasu testo laikas: -
+
+list
+
+1000 irasu testo laikas: 0.0065067
+1000 irasu testo laikas: 0.0155399
+1000 irasu testo laikas: 0.0156749
+vidurkis: 0.0125738
+
+10000 irasu testo laikas: 0.100346
+10000 irasu testo laikas: 0.102906
+10000 irasu testo laikas: 0.100322
+vidurkis: 0.1011913
+
+100000 irasu testo laikas: 0.887791
+100000 irasu testo laikas: 0.860867
+100000 irasu testo laikas: 0.854721
+vidurkis: 0.867793
+
+1000000 irasu testo laikas: 8.97752
+1000000 irasu testo laikas: 9.35352
+1000000 irasu testo laikas: 10.3744
+vidurkis: 9.56848
+
+10000000 irasu testo laikas: 90.8248
+10000000 irasu testo laikas: 90.24
+10000000 irasu testo laikas: 92.6152
+vidurkis: 91.2267
+
+| List                | Vector              | Studentu sk. (10 namu darbu)|
+|---------------------|---------------------|---------------|
+| 0.0125738  | 0.038605| 1000          |
+| 0.1011913   | 2.4047267| 10000         |
+| 0.867793    |  239.441  | 100000        |
+| 9.56848    | -   | 1000000       |
+| 91.2267    | -  | 10000000      |
+
+
+Išvados:
+2 strategijos list konteineris veikia greičiausiai, keliom sekundėm greičiau už 1 strategijos vector konteinerį.
+2 strategijos vector konteineris veikia gerokai lėčiau, nes ištrynus elementą, 
+vector turi paslinkti visus elementus per vieną į kairę, kad atitiktų numeraciją.
+Tai užtrunka labai daug laiko. 
