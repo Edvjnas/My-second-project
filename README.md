@@ -67,48 +67,48 @@ vidurkis: 137.55933
 | 14.0935    | 13.6326    | 1000000       |
 | 265.561    | 137.55933  | 10000000      |
 
-2 Strategija:
-vector
-1000 irasu testo laikas: 0.0312456
-1000 irasu testo laikas: 0.0377093
-1000 irasu testo laikas: 0.0468611
-vidurkis: 0.038605
+2 Strategija:  
+vector  
+1000 irasu testo laikas: 0.0312456  
+1000 irasu testo laikas: 0.0377093  
+1000 irasu testo laikas: 0.0468611  
+vidurkis: 0.038605  
 
-10000 irasu testo laikas: 2.40522
-10000 irasu testo laikas: 2.3809
-10000 irasu testo laikas: 2.42806
-vidurkis: 2.4047267
+10000 irasu testo laikas: 2.40522  
+10000 irasu testo laikas: 2.3809  
+10000 irasu testo laikas: 2.42806  
+vidurkis: 2.4047267  
 
-100000 irasu testo laikas: 239.441 (Rikiavimas truko 238.674)
-1000000 irasu testo laikas: -
-10000000 irasu testo laikas: -
+100000 irasu testo laikas: 239.441 (Rikiavimas truko 238.674)  
+1000000 irasu testo laikas: -  
+10000000 irasu testo laikas: -  
 
 list
 
-1000 irasu testo laikas: 0.0065067
-1000 irasu testo laikas: 0.0155399
-1000 irasu testo laikas: 0.0156749
-vidurkis: 0.0125738
+1000 irasu testo laikas: 0.0065067  
+1000 irasu testo laikas: 0.0155399  
+1000 irasu testo laikas: 0.0156749  
+vidurkis: 0.0125738  
 
-10000 irasu testo laikas: 0.100346
-10000 irasu testo laikas: 0.102906
-10000 irasu testo laikas: 0.100322
-vidurkis: 0.1011913
+10000 irasu testo laikas: 0.100346  
+10000 irasu testo laikas: 0.102906  
+10000 irasu testo laikas: 0.100322  
+vidurkis: 0.1011913  
 
-100000 irasu testo laikas: 0.887791
-100000 irasu testo laikas: 0.860867
-100000 irasu testo laikas: 0.854721
-vidurkis: 0.867793
+100000 irasu testo laikas: 0.887791  
+100000 irasu testo laikas: 0.860867  
+100000 irasu testo laikas: 0.854721  
+vidurkis: 0.867793  
 
-1000000 irasu testo laikas: 8.97752
-1000000 irasu testo laikas: 9.35352
-1000000 irasu testo laikas: 10.3744
-vidurkis: 9.56848
+1000000 irasu testo laikas: 8.97752  
+1000000 irasu testo laikas: 9.35352  
+1000000 irasu testo laikas: 10.3744  
+vidurkis: 9.56848  
 
-10000000 irasu testo laikas: 90.8248
-10000000 irasu testo laikas: 90.24
-10000000 irasu testo laikas: 92.6152
-vidurkis: 91.2267
+10000000 irasu testo laikas: 90.8248  
+10000000 irasu testo laikas: 90.24  
+10000000 irasu testo laikas: 92.6152  
+vidurkis: 91.2267  
 
 | List                | Vector              | Studentu sk. (10 namu darbu)|
 |---------------------|---------------------|---------------|
@@ -118,9 +118,44 @@ vidurkis: 91.2267
 | 9.56848    | -   | 1000000       |
 | 91.2267    | -  | 10000000      |
 
+3 strategija:  
+
+1000 irasu testo laikas: 0.0065031  
+1000 irasu testo laikas: 0.0156744  
+1000 irasu testo laikas: 0.0155358  
+vidurkis:  0.012904433  
+
+10000 irasu testo laikas: 0.0934651  
+10000 irasu testo laikas: 0.0846938  
+10000 irasu testo laikas: 0.100308  
+vidurkis: 0.0921558  
+
+100000 irasu testo laikas: 0.823362  
+100000 irasu testo laikas: 0.825464  
+100000 irasu testo laikas: 0.836797  
+vidurkis: 0.8282077  
+
+1000000 irasu testo laikas: 8.35544  
+1000000 irasu testo laikas: 8.54398  
+1000000 irasu testo laikas: 9.12964  
+vidurkis: 8.676686  
+
+10000000 irasu testo laikas: 92.2936  
+10000000 irasu testo laikas: 87.654  
+10000000 irasu testo laikas: 86.3927  
+vidurkis: 88.1131  
+| List                | Vector              | Studentu sk. (10 namu darbu)|
+|---------------------|---------------------|---------------|
+| - | 0.012904433| 1000          |
+| -   |  0.0921558| 10000         |
+| -   |0.8282077  | 100000        |
+| -    | 8.676686    | 1000000       |
+| -    | 88.1131    | 10000000      |
 
 Išvados:
 2 strategijos list konteineris veikia greičiausiai, keliom sekundėm greičiau už 1 strategijos vector konteinerį.
 2 strategijos vector konteineris veikia gerokai lėčiau, nes ištrynus elementą, 
 vector turi paslinkti visus elementus per vieną į kairę, kad atitiktų numeraciją.
 Tai užtrunka labai daug laiko. 
+Panaudojus efektyvų darbo su konteineriais metodą std::Partition ir pritaikius jį vector tipo konteineriui buvo 
+gautas optimaliausias variantas.
