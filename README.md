@@ -180,6 +180,10 @@ gautas optimaliausias variantas.
 
 
 
-v.pradinė (pradinė versija): Ši versija atspindi pirminį programos variantą, kuris atitiko pagrindinius reikalavimus - gauna vartotojo įvestį dėl studentų duomenų, skaičiuoja galutinius pažymius naudojant vidurkį, tvarko nežinomą namų darbų rezultatų skaičių ir leidžia tiek rankinę įvestį, tiek failų įvedimą/išvedimą. 
-v0.1 (piarba rmas atnaujinimas): Ši atnaujinta versija papildo pradinį kodo variantą. Ji gali atlikti pažymių skaičiavimą naudojant medianą. Pertvarkytas kodas, t.y. kodas išskirstytas į mylib.h, mylib.cpp ir main.cpp failus dėl tvarkos. Įgyvendintas išimčių valdymas. Pataisytas išvedimo formatavimas, kad būtų tvarkingesnis duomenų rodymas. Pridėtas rūšiavimas pagal vardą.
+v.pradinė (pradinė versija): Ši versija atspindi pirminį programos variantą, kuris atitiko pagrindinius reikalavimus - gauna vartotojo įvestį dėl studentų duomenų, skaičiuoja galutinius pažymius naudojant vidurkį, tvarko nežinomą namų darbų rezultatų skaičių ir leidžia tiek rankinę įvestį, tiek failų įvedimą/išvedimą.   
+v0.1 (pirmas atnaujinimas): Ši atnaujinta versija papildo pradinį kodo variantą. Ji gali atlikti pažymių skaičiavimą naudojant medianą. Pertvarkytas kodas, t.y. kodas išskirstytas į mylib.h, mylib.cpp ir main.cpp failus dėl tvarkos. Įgyvendintas išimčių valdymas. Pataisytas išvedimo formatavimas, kad būtų tvarkingesnis duomenų rodymas. Pridėtas rūšiavimas pagal vardą.  
+v0.2 (antras atnaujimas): Ši atnaujinta versija generuoja skirtingo dydžio failus su atsitiktiniais studentų duomenimis, rūšiuoja studentus į dvi skirtingas kategorijas: "genijai" ir "vargšiukai" ir matuoja programos veikimo laiką.
+v0.3 (trečias atnaujinimas): Ši atnaujinta versija leidžia vartotojui pasirinkti norimą konteinerį (list arba vector), kad tai pasiekti buvo pridėti templates. Buvo matuojama programos sparta su vector ir list konteineriais bei lyginami rezultatai.  
+v1.0 (ketvirtas atnaujinimas): Ši atnaujinta versija turi tris skirtingas studentų rikiavimo į dvi grupes strategijas, su visomis strategijomis buvo išmatuotas laikas ir padarytos išvados.
+
 
