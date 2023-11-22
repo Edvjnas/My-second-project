@@ -177,3 +177,9 @@ vector turi paslinkti visus elementus per vieną į kairę, kad atitiktų numera
 Tai užtrunka labai daug laiko. 
 Panaudojus efektyvų darbo su konteineriais metodą std::Partition ir pritaikius jį vector tipo konteineriui buvo 
 gautas optimaliausias variantas.
+
+
+
+v.pradinė (pradinė versija): Ši versija atspindi pirminį programos variantą, kuris atitiko pagrindinius reikalavimus - gauna vartotojo įvestį dėl studentų duomenų, skaičiuoja galutinius pažymius naudojant vidurkį, tvarko nežinomą namų darbų rezultatų skaičių ir leidžia tiek rankinę įvestį, tiek failų įvedimą/išvedimą. 
+v0.1 (piarba rmas atnaujinimas): Ši atnaujinta versija papildo pradinį kodo variantą. Ji gali atlikti pažymių skaičiavimą naudojant medianą. Pertvarkytas kodas, t.y. kodas išskirstytas į mylib.h, mylib.cpp ir main.cpp failus dėl tvarkos. Įgyvendintas išimčių valdymas. Pataisytas išvedimo formatavimas, kad būtų tvarkingesnis duomenų rodymas. Pridėtas rūšiavimas pagal vardą.
+
