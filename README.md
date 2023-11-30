@@ -189,12 +189,6 @@ gautas optimaliausias variantas.
 
 ## Naudojimosi instrukcija
 
-### Įdiegimas
-
-1. Parsisiųskite programos kodą iš repozitorijos.
-2. Atidarykite terminalą ir naviguokite į programos aplanką.
-3. Paleiskite kompiliavimo ar paleidimo komandas.
-
 ### Pagrindinės funkcijos
 
 1. **Duomenų įvedimas ir tvarkymas**
@@ -214,7 +208,14 @@ gautas optimaliausias variantas.
     - `SpausdintiRezultatus` ir `SpausdintiStudentus` leidžia išvesti rezultatus į failus arba terminalą.
 
 6. **Testavimas**
-    - Funkcija `Testavimas` atlieka programos veikimo laiko testavimą su įvairiais duomenų kiekiais.
+    - Funkcija `Testavimas` atlieka programos veikimo laiko testavimą su įvairiais duomenų kiekiais.  
+  
+### Įdiegimas
+
+1. Parsisiųskite programos kodą iš repozitorijos.
+2. Atidarykite aplanką ir paspauskite ant RUNME.bat failo.  
+3. Atidarykite debug aplanką.  
+4. Spauskite ant failo ManoPradinisProjektas.  
 
 ### Kaip naudotis
 
