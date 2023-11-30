@@ -49,10 +49,10 @@ bool SortVardas(const T& a, const T& b) {
 }
 
 int NamuDarbuSk(const string& pav){
-    istringstream InputStringStream(pav);
+    std::istringstream ss(pav);
             vector<string> zodziai;
             string zodis;
-            while (InputStringStream >> zodis) {
+            while (ss >> zodis) {
                 zodziai.push_back(zodis);
                 }
             int ndsk= zodziai.size()-3;
@@ -198,7 +198,7 @@ void klaida(int &a){
     }
 
         if (s==2){
-            ifstream input("2.txt");
+            ifstream input("studentai.txt");
             if (!input.is_open()) {
                 cout << "Nepavyko atidaryti failo..." << endl;
             }
@@ -471,7 +471,7 @@ void Testavimas(T& studentai) {
         sortingFunction = SortVardas;
     }
 
-    for (int i = 1000000; i <= 1000000; i = i * 10) {
+    for (int i = 1000; i <= 1000; i = i * 10) {
         T studentaiContainer;
         chrono::duration<double> suma = chrono::duration<double>::zero();
         auto start = std::chrono::high_resolution_clock::now();
@@ -488,7 +488,7 @@ void Testavimas(T& studentai) {
         }
 
         start = std::chrono::high_resolution_clock::now();
-        pair<T, T> sortedStudents = RikiuotiStudentus1(studentaiContainer);
+        pair<T, T> sortedStudents = RikiuotiStudentus3(studentaiContainer);
         T genijai = sortedStudents.first;
         T vargsiukai = sortedStudents.second;
         end = std::chrono::high_resolution_clock::now();
@@ -523,7 +523,6 @@ template void Testavimas(std::list<Studentas>&);
 template void IvestiDuomenis(std::vector<Studentas>&);
 
 template void IvestiDuomenis(std::list<Studentas>&);
-
 
 
 
