@@ -212,10 +212,11 @@ gautas optimaliausias variantas.
   
 ### Įdiegimas
 
-1. Parsisiųskite programos kodą iš repozitorijos.
-2. Atidarykite aplanką ir paspauskite ant RUNME.bat failo.  
-3. Atidarykite debug aplanką.  
-4. Spauskite ant failo ManoPradinisProjektas.  
+1. Instaliuokite CMake programą, jei jos dar neturite.
+2. Parsisiųskite programos kodą iš repozitorijos.
+3. Atidarykite aplanką ir paspauskite ant RUNME.bat failo.  
+4. Atidarykite debug aplanką.  
+5. Spauskite ant failo ManoPradinisProjektas.  
 
 ### Kaip naudotis
 
