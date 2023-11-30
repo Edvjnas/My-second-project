@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
+#include <sstream>
 #include <fstream>
 #include <chrono>
 
