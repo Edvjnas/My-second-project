@@ -245,7 +245,7 @@ gautas optimaliausias variantas.
 Programa truputi pagreitėjo.
 
 ## Klasių versija ištirta su optimizavimo flag'ais
--01  
+### -01  
 
 10000 irasu testo laikas: 0.0997843  
 10000 irasu testo laikas: 0.0957292  
@@ -262,7 +262,7 @@ Programa truputi pagreitėjo.
 1000000 irasu testo laikas: 9.56701  
 ### 1000000 irasu testo laiku vidurkis:9.465476  
 
--02  
+### -02  
 
 10000 irasu testo laikas: 0.0936091  
 10000 irasu testo laikas: 0.0937973  
@@ -279,7 +279,7 @@ Programa truputi pagreitėjo.
 1000000 irasu testo laikas: 9.46142  
 ### 1000000 irasu testo laiku vidurkis:9.321053 
 
--03  
+### -03  
 
 10000 irasu testo laikas: 0.0938441  
 10000 irasu testo laikas: 0.0966851  
@@ -302,6 +302,56 @@ Programa truputi pagreitėjo.
 | -O2                | 0,0938483                      | 0,896156                         | 9,321053                          |
 | -O3                | 0,09408                        | 0,8924                           | 9,2907                            |
 
+## Strukturų versija ištirta su optimizavimo flag'ais
+### -01
 
+10000 irasu testo laikas: 0.0897535
+10000 irasu testo laikas: 0.0920653
+10000 irasu testo laikas: 0.0937954
+### 10000 irasu testo laiku vidurkis:0.0918714
+
+100000 irasu testo laikas: 0.891015
+100000 irasu testo laikas: 0.889391
+100000 irasu testo laikas: 0.881173
+### 100000 irasu testo laiku vidurkis:0.887193
+
+1000000 irasu testo laikas: 8.8453
+1000000 irasu testo laikas: 9.20524
+1000000 irasu testo laikas: 9.56347
+### 1000000 irasu testo laiku vidurkis:9.20467
+
+### -02
+
+10000 irasu testo laikas: 0.102586
+10000 irasu testo laikas: 0.0886834
+10000 irasu testo laikas: 0.0907143
+### 10000 irasu testo laiku vidurkis:0.0936619
+
+100000 irasu testo laikas: 0.881012
+100000 irasu testo laikas: 0.86912
+100000 irasu testo laikas: 0.880108
+### 100000 irasu testo laiku vidurkis:0.876413333
+
+1000000 irasu testo laikas: 9.27102
+1000000 irasu testo laikas: 9.19924
+1000000 irasu testo laikas: 9.14871
+### 1000000 irasu testo laiku vidurkis:9.206656667
+
+### -03
+
+10000 irasu testo laikas: 0.11161
+10000 irasu testo laikas: 0.091098
+10000 irasu testo laikas: 0.0911148
+### 10000 irasu testo laiku vidurkis:0.0972746
+
+100000 irasu testo laikas: 0.929417
+100000 irasu testo laikas: 0.873154
+100000 irasu testo laikas: 0.877394
+### 100000 irasu testo laiku vidurkis:0.893655
+
+1000000 irasu testo laikas: 9.03266
+1000000 irasu testo laikas: 9.72554
+1000000 irasu testo laikas: 9.608
+### 1000000 irasu testo laiku vidurkis:9.4554
 
 
