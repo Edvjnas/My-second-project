@@ -242,7 +242,65 @@ gautas optimaliausias variantas.
 | 0.8509137    | 0.8282077    | 100000                       |
 | 8.72373      | 8.676686     | 1000000                      |  
 
-Programos greitis beveik nepasikeitė.
+Programa truputi pagreitėjo.
+
+## Klasių versija ištirta su optimizavimo flag'ais
+-01  
+
+10000 irasu testo laikas: 0.0997843  
+10000 irasu testo laikas: 0.0957292  
+10000 irasu testo laikas: 0.0933988  
+### 10000 irasu testu laiku vidurkis:0.0969711  
+
+100000 irasu testo laikas: 0.917355  
+100000 irasu testo laikas: 0.957877  
+100000 irasu testo laikas: 0.904995  
+### 100000 irasu testo laiku vidurkis:0.926742  
+
+1000000 irasu testo laikas: 9.21228  
+1000000 irasu testo laikas: 9.61814  
+1000000 irasu testo laikas: 9.56701  
+### 1000000 irasu testo laiku vidurkis:9.465476  
+
+-02  
+
+10000 irasu testo laikas: 0.0936091  
+10000 irasu testo laikas: 0.0937973  
+10000 irasu testo laikas: 0.0941384  
+### 10000 irasu testo laiku vidurkis:0.0938483     
+
+100000 irasu testo laikas: 0.903245  
+100000 irasu testo laikas: 0.88485  
+100000 irasu testo laikas: 0.900373  
+### 100000 irasu testo laiku vidurkis:0.896156   
+
+1000000 irasu testo laikas: 8.99355  
+1000000 irasu testo laikas: 9.50919  
+1000000 irasu testo laikas: 9.46142  
+### 1000000 irasu testo laiku vidurkis:9.321053 
+
+-03  
+
+10000 irasu testo laikas: 0.0938441  
+10000 irasu testo laikas: 0.0966851  
+10000 irasu testo laikas: 0.0937117  
+### 10000 irasu testo laiku vidurkis:0.09408  
+
+100000 irasu testo laikas: 0.898039  
+100000 irasu testo laikas: 0.886993  
+100000 irasu testo laikas: 0.891137  
+### 100000 irasu testo laiku vidurkis:0.8924   
+
+1000000 irasu testo laikas: 9.00508  
+1000000 irasu testo laikas: 9.51215  
+1000000 irasu testo laikas: 9.35478  
+### 1000000 irasu testo laiku vidurkis:9.2907  
+
+| Optimizavimo lygis | Vidutinis laikas, 10 000 įrašų | Vidutinis laikas, 100 000 įrašų | Vidutinis laikas, 1 000 000 įrašų |
+|--------------------|--------------------------------|----------------------------------|-----------------------------------|
+| -O1                | 0,0969711                      | 0,926742                         | 9,465476                          |
+| -O2                | 0,0938483                      | 0,896156                         | 9,321053                          |
+| -O3                | 0,09408                        | 0,8924                           | 9,2907                            |
 
 
 
