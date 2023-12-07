@@ -6,18 +6,89 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
-#include <sstream>
 #include <fstream>
+#include <sstream>
 #include <chrono>
 
 using namespace std;
 
-struct Studentas {
+/*struct Studentas {
     string vardas;
     string pavarde;
     vector<int> namuDarbai;
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
+};*/
+class Studentas {
+private:
+    std::string vardas;
+    std::string pavarde;
+    std::vector<int> namuDarbai;
+    int egzaminas;
+    double galutinisBalas, galutinisBalasM;
+
+public:
+    Studentas() : egzaminas(0), galutinisBalas(0.0), galutinisBalasM(0.0) {}
+    Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& namuDarbai, int egzaminas)
+        : vardas(vardas), pavarde(pavarde), namuDarbai(namuDarbai), egzaminas(egzaminas),
+          galutinisBalas(0.0), galutinisBalasM(0.0) {}
+    std::vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const std::string& failoPavadinimas, int namuDarbuSkaicius);
+
+    const std::string& GetVardas() const {
+        return vardas;
+    }
+
+    void SetVardas(const std::string& newVardas) {
+        vardas = newVardas;
+    }
+
+    const std::string& GetPavarde() const {
+        return pavarde;
+    }
+
+    void SetPavarde(const std::string& newPavarde) {
+        pavarde = newPavarde;
+    }
+
+    const std::vector<int>& GetNamuDarbai() const {
+        return namuDarbai;
+    }
+
+    void AddNamuDarbas(int pazymys) {
+        namuDarbai.push_back(pazymys);
+    }
+
+    void ClearNamuDarbai() {
+        namuDarbai.clear();
+    }
+
+    void SetNamuDarbai(const std::vector<int>& newNamuDarbai) {
+        namuDarbai = newNamuDarbai;
+    }
+
+    int GetEgzaminas() const {
+        return egzaminas;
+    }
+
+    void SetEgzaminas(int newEgzaminas) {
+        egzaminas = newEgzaminas;
+    }
+
+    double GetGalutinisBalas() const {
+        return galutinisBalas;
+    }
+
+    void SetGalutinisBalas(double newGalutinisBalas) {
+        galutinisBalas = newGalutinisBalas;
+    }
+
+    double GetGalutinisBalasM() const {
+        return galutinisBalasM;
+    }
+
+    void SetGalutinisBalasM(double newGalutinisBalasM) {
+        galutinisBalasM = newGalutinisBalasM;
+    }
 };
 
 template <typename T>
@@ -32,16 +103,15 @@ bool SortVardas(const T& a, const T& b);
 template <typename T>
 int NamuDarbuSk(const string& pav);
 
-template <typename T>
+
 void klaida(int &a);
 
-template <typename T>
-void klaida1(int &a);
+int klaida1(int a);
 
-template <typename T>
+
 void klaida2(int &a);
 
-template <typename T>
+
 void klaida3(int &a);
 
 template <typename T>
