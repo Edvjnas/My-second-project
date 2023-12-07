@@ -224,4 +224,26 @@ gautas optimaliausias variantas.
 2. Pasirinkite norimą veiksmą - įveskite duomenis rankiniu būdu, nuskaitykite iš failo arba naudokite funkcijas.
 3. Sekite programos pateiktus nurodymus ir įvedimo laukus.
 
+# v1.1 
+## Vector greitis su klasėmis:  
+100000 irasu testo laikas: 0.846292  
+100000 irasu testo laikas: 0.853298  
+100000 irasu testo laikas: 0.853151  
+### 100000 irasu testo laiko vidurkis: 0.8509137  
+
+1000000 irasu testo laikas: 8.6916  
+1000000 irasu testo laikas: 8.61485  
+1000000 irasu testo laikas: 8.86474  
+### 1000000 irasu testo laiko vidurkis: 8.72373
+## Klasių ir struktūros greičių palyginimas:
+
+| Klasės       | Struktūros   | Studentu sk. (10 namu darbu) |
+|--------------|--------------|------------------------------|
+| 0.8509137    | 0.8282077    | 100000                       |
+| 8.72373      | 8.676686     | 1000000                      |  
+
+Programos greitis beveik nepasikeitė.
+
+
+
 
