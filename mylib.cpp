@@ -4,18 +4,18 @@ using namespace std;
 
 template <typename T>
     bool sortDidejant(const T& a, const T& b) {
-    return a.galutinisBalas < b.galutinisBalas;
+    return a.GetGalutinisBalas() < b.GetGalutinisBalas();
 }
     template <typename T>
     bool sortMazejant(const T& a, const T& b) {
-        return a.galutinisBalas > b.galutinisBalas;
+        return a.GetGalutinisBalas() > b.GetGalutinisBalas();
 }
 template <typename T>
 double SkaiciuotiGalutiniBalaM(const T& studentas) {
-    if (studentas.namuDarbai.empty()) {
-        return studentas.egzaminas * 0.6;
+    if (studentas.GetNamuDarbai().empty()) {
+        return studentas.GetEgzaminas() * 0.6;
     }
-    vector<int> namuDarbaiSorted = studentas.namuDarbai;
+    vector<int> namuDarbaiSorted = studentas.GetNamuDarbai();
     sort(namuDarbaiSorted.begin(), namuDarbaiSorted.end());
     double namuDarbuMediana = 0.0;
     int n = namuDarbaiSorted.size();
@@ -28,30 +28,31 @@ double SkaiciuotiGalutiniBalaM(const T& studentas) {
         namuDarbuMediana = namuDarbaiSorted[n/2];
     }
 
-    return 0.4 * namuDarbuMediana + 0.6 * studentas.egzaminas;
+    return 0.4 * namuDarbuMediana + 0.6 * studentas.GetEgzaminas();
 }
 template <typename T>
 double SkaiciuotiGalutiniBala(const T& studentas) {
-    if (studentas.namuDarbai.empty()) {
-        return studentas.egzaminas * 0.6;
+    if (studentas.GetNamuDarbai().empty()) {
+        return studentas.GetEgzaminas() * 0.6;
     }
     double namuDarbuVidurkis = 0.0;
-    for (int nd : studentas.namuDarbai) {
+    for (int nd : studentas.GetNamuDarbai()) {
         namuDarbuVidurkis =namuDarbuVidurkis + nd;
     }
-    namuDarbuVidurkis = namuDarbuVidurkis / studentas.namuDarbai.size();
+    namuDarbuVidurkis = namuDarbuVidurkis / studentas.GetNamuDarbai().size();
 
-    return 0.4 * namuDarbuVidurkis + 0.6 * studentas.egzaminas;
+    return 0.4 * namuDarbuVidurkis + 0.6 * studentas.GetEgzaminas();
 }
 template <typename T>
 bool SortVardas(const T& a, const T& b) {
-    return a.vardas < b.vardas;
+    return a.GetVardas() < b.GetVardas();
 }
 
 int NamuDarbuSk(const string& pav){
-    std::istringstream ss(pav);
-            vector<string> zodziai;
-            string zodis;
+    //std::istringstream InputStringStream(pav);
+    std::stringstream ss(pav);
+            std::vector<string> zodziai;
+            std::string zodis;
             while (ss >> zodis) {
                 zodziai.push_back(zodis);
                 }
@@ -80,26 +81,26 @@ void klaida(int &a){
         while (cin.fail() == true || a < -2 || a > 10);
     }
 
-    void klaida1(int &a){
-    do{
-        try{
-                    if (cin.fail()) {
-                            throw runtime_error("Ivedete ne sveikaji skaiciu. ");
-                    }
-                    if (a < -2 || a > 10 || a == -1) {
-                            throw runtime_error("Ivedete netinkamus duomenis. ");
-                    }
+    int klaida1(int a) {
+    do {
+        try {
+            if (cin.fail()) {
+                throw runtime_error("Ivedete ne sveikaji skaiciu. ");
+            }
+            if (a < -2 || a > 10 || a == -1) {
+                throw runtime_error("Ivedete netinkamus duomenis. ");
+            }
+        } catch (const runtime_error& e) {
+            cout << e.what();
+            cin.clear();
+            cin.ignore(256, '\n');
+            cout << "Veskite duomenis dar karta: ";
+            cin >> a;
         }
-        catch (const runtime_error& e){
-                    cout << e.what();
-                    cin.clear();
-                    cin.ignore(256, '\n');
-                    cout << "Veskite duomenis dar karta: ";
-                    cin >> a;
-                }
-        }
-        while (cin.fail() == true || a == -1 || a > 10 || a < -2);
-    }
+    } while (cin.fail() == true || a == -1 || a > 10 || a < -2);
+
+    return a;
+}
 
     void klaida2(int &a){
     do{
@@ -175,8 +176,8 @@ void klaida(int &a){
         }
         while (a != "Vidurkis" && a != "VIDURKIS" && a != "vidurkis" && a != "Mediana" && a != "mediana" && a != "MEDIANA");
     }
-    template <typename T>
-    void IvestiDuomenis(T& studentai) {
+template <typename T>
+void IvestiDuomenis(T& studentai) {
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> distribution(1, 10);
@@ -198,27 +199,33 @@ void klaida(int &a){
     }
 
         if (s==2){
-            ifstream input("studentai.txt");
+            ifstream input("2.txt");
             if (!input.is_open()) {
                 cout << "Nepavyko atidaryti failo..." << endl;
             }
             else {
-                string pav;
+                std::string pav;
                     getline(input, pav);
                     int ndsk = NamuDarbuSk(pav);
 
     while (!input.eof()) {
         Studentas naujasStudentas;
-        input >> naujasStudentas.vardas >> naujasStudentas.pavarde;
+        string vardas, pavarde;
+        input >> vardas >> pavarde;
+        naujasStudentas.SetVardas(vardas);
+        naujasStudentas.SetPavarde(pavarde);
         for(int i = 1; i <= ndsk; i++){
             int nd;
             input >> nd;
-            naujasStudentas.namuDarbai.push_back(nd);
+            naujasStudentas.AddNamuDarbas(nd);
         }
-        input >> naujasStudentas.egzaminas;
+        int egzaminas;
+        input >> egzaminas;
+        naujasStudentas.SetEgzaminas(egzaminas);
 
-        naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
-        naujasStudentas.galutinisBalasM = SkaiciuotiGalutiniBalaM(naujasStudentas);
+
+        naujasStudentas.SetGalutinisBalas(SkaiciuotiGalutiniBala(naujasStudentas));
+        naujasStudentas.SetGalutinisBalasM(SkaiciuotiGalutiniBalaM(naujasStudentas));
         studentai.push_back(naujasStudentas);
 
             }
@@ -238,8 +245,8 @@ output << "\nGalutiniai rezultatai:\n";
 output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid.)" << setw(20) << "Galutinis balas(med.)" << endl;
 output << "----------------------------------------------------------------------------" << endl;
 for (const Studentas& studentas : studentai) {
-    output << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(25) <<
-        studentas.galutinisBalas << setprecision(2) << setw(20) << studentas.galutinisBalasM << endl;
+    output << setw(15) << studentas.GetVardas() << setw(15) << studentas.GetPavarde() << fixed << setprecision(2) << setw(25) <<
+        studentas.GetGalutinisBalas() << setprecision(2) << setw(20) << studentas.GetGalutinisBalasM() << endl;
 }
 output.close();
             }
@@ -248,14 +255,16 @@ output.close();
     if (s==1){
     while (true) {
         Studentas naujasStudentas;
-
+        string vardas, pavarde;
         cout << "Iveskite studento varda: ";
-        cin >> naujasStudentas.vardas;
+        cin >> vardas;
+        naujasStudentas.SetVardas(vardas);
 
         cout << "Iveskite studento pavarde: ";
-        cin >> naujasStudentas.pavarde;
+        cin >> pavarde;
+        naujasStudentas.SetPavarde(pavarde);
 
-        naujasStudentas.namuDarbai.clear();
+        naujasStudentas.ClearNamuDarbai();
 
         int nd;
         cout << "Iveskite namu darbu tarpinius rezultatus (-1, jei baigete ir -2, jei norite, kad namu darbu balai butu sugeneruoti atsitiktinai): ";
@@ -272,23 +281,25 @@ output.close();
                 klaida3(n);
                 for (int i = 1; i <= n; i++){
                    nd = distribution(mt);
-                   naujasStudentas.namuDarbai.push_back(nd);
+                   naujasStudentas.AddNamuDarbas(nd);
                    cout << "(" << nd << ")" << endl;
                 }
                 break;
                 }
-            naujasStudentas.namuDarbai.push_back(nd);
+            naujasStudentas.AddNamuDarbas(nd);
         }
+        int egzaminas;
         cout << "Iveskite egzamino rezultata (-2, jei norite, kad ji sugeneruotu atsitiktinai): ";
-        cin >> naujasStudentas.egzaminas;
-        klaida1(naujasStudentas.egzaminas);
-        if(naujasStudentas.egzaminas == -2){
-            naujasStudentas.egzaminas = distribution(mt);
-            cout << "(" << naujasStudentas.egzaminas << ")" << endl;
+        cin >> egzaminas;
+        naujasStudentas.SetEgzaminas(egzaminas);
+        klaida1(naujasStudentas.GetEgzaminas());
+        if(naujasStudentas.GetEgzaminas() == -2){
+            naujasStudentas.SetEgzaminas(distribution(mt));
+            cout << "(" << naujasStudentas.GetEgzaminas() << ")" << endl;
         }
 
-        naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
-        naujasStudentas.galutinisBalasM = SkaiciuotiGalutiniBalaM(naujasStudentas);
+        naujasStudentas.SetGalutinisBalas(SkaiciuotiGalutiniBala(naujasStudentas));
+        naujasStudentas.SetGalutinisBalasM(SkaiciuotiGalutiniBalaM(naujasStudentas));
 
         studentai.push_back(naujasStudentas);
 
@@ -309,7 +320,7 @@ output.close();
         }
     SpausdintiRezultatus(studentai);
     }
-    }
+}
 
 template <typename T>
 void SpausdintiRezultatus(const T& studentai) {
@@ -322,24 +333,24 @@ void SpausdintiRezultatus(const T& studentai) {
         cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(med)" << endl;
         cout << "--------------------------------------------" << endl;
         for (const Studentas& studentas : studentai) {
-            cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(15) << studentas.galutinisBalasM << endl;
+            cout << setw(15) << studentas.GetVardas() << setw(15) << studentas.GetPavarde() << fixed << setprecision(2) << setw(15) << studentas.GetGalutinisBalasM() << endl;
         }
     }
     else {
         cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid)" << endl;
         cout << "--------------------------------------------" << endl;
         for (const Studentas& studentas : studentai) {
-        cout << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << fixed << setprecision(2) << setw(15) << studentas.galutinisBalas << endl;
+        cout << setw(15) << studentas.GetVardas() << setw(15) << studentas.GetPavarde() << fixed << setprecision(2) << setw(15) << studentas.GetGalutinisBalas() << endl;
         }
     }
 }
-template <typename T>
+/*template <typename T>
 pair<T, T> RikiuotiStudentus1(const T& studentai) {
     T genijai;
     T vargsiukai;
 
     for (const Studentas& studentas : studentai) {
-        if (studentas.galutinisBalas >= 5.0) {
+        if (studentas.GetGalutinisBalas() >= 5.0) {
             genijai.push_back(studentas);
         } else {
             vargsiukai.push_back(studentas);
@@ -362,11 +373,11 @@ std::pair<T, T> RikiuotiStudentus2(T& studentai) {
     }
 
     return std::make_pair(studentai, vargsiukai);
-}
+}*/
 template <typename T>
 pair<T, T> RikiuotiStudentus3(T& studentai) {
     auto partitionIter = partition(studentai.begin(), studentai.end(),
-        [](const auto& studentas) { return studentas.galutinisBalas >= 5.0; });
+        [](const auto& studentas) { return studentas.GetGalutinisBalas() >= 5.0; });
 
     T genijai(studentai.begin(), partitionIter);
     T vargsiukai(partitionIter, studentai.end());
@@ -379,7 +390,7 @@ pair<T, T> RikiuotiStudentus3(T& studentai) {
      output << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(15) << "Galutinis balas(vid)" << endl;
 
     for (const Studentas& studentas : studentai) {
-        output << left << setw(15) << studentas.vardas << setw(15) << studentas.pavarde << setw(15) << studentas.galutinisBalas << endl;
+        output << left << setw(15) << studentas.GetVardas() << setw(15) << studentas.GetPavarde() << setw(15) << studentas.GetGalutinisBalas() << endl;
     }
 
     output.close();
@@ -392,7 +403,7 @@ pair<T, T> RikiuotiStudentus3(T& studentai) {
         return " Pavarde" + to_string(a);
 }
 
-    vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
+   vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const string& failoPavadinimas, int namuDarbuSkaicius) {
         vector<Studentas> studentai;
         ofstream output(failoPavadinimas);
         std::random_device rd;
@@ -404,23 +415,24 @@ pair<T, T> RikiuotiStudentus3(T& studentai) {
             output << setw(10) << "ND" + to_string(p);
         }
         output << setw(10) << "Egz" << endl;
-        for (int i = 1; i <= studentuSkaicius; i++) {
-            Studentas naujasStudentas;
-            naujasStudentas.vardas = GeneruotiVarda(i);
-            naujasStudentas.pavarde = GeneruotiPavarde(i);
-            naujasStudentas.namuDarbai.reserve(namuDarbuSkaicius);
-            for (int j = 1; j <= namuDarbuSkaicius; j++) {
-                naujasStudentas.namuDarbai.push_back(distribution(mt));
-            }
-            naujasStudentas.egzaminas = distribution(mt);
-            studentai.push_back(naujasStudentas);
-            output << left << setw(20) << naujasStudentas.vardas << setw(20) << naujasStudentas.pavarde;
-            for (const int& pazymys : naujasStudentas.namuDarbai) {
-                output << setw(10) << pazymys;
-            }
-            output << setw(10) << naujasStudentas.egzaminas << endl;
+        for (int i = 0; i < studentuSkaicius; ++i) {
+        Studentas naujasStudentas;
+        naujasStudentas.SetVardas(GeneruotiVarda(i)); 
+        naujasStudentas.SetPavarde(GeneruotiPavarde(i));
+        naujasStudentas.SetNamuDarbai(std::vector<int>(namuDarbuSkaicius)); 
+        for (int j = 1; j <= namuDarbuSkaicius; j++) {
+            naujasStudentas.AddNamuDarbas(distribution(mt));
         }
-        output.close();
+        naujasStudentas.SetEgzaminas(distribution(mt));
+        studentai.push_back(naujasStudentas);
+
+        output << left << setw(20) << naujasStudentas.GetVardas() << setw(20) << naujasStudentas.GetPavarde();
+        for (const int& pazymys : naujasStudentas.GetNamuDarbai()) {
+            output << setw(10) << pazymys;
+        }
+        output << setw(10) << naujasStudentas.GetEgzaminas() << endl;
+    }
+    output.close();
     return studentai;
     }
     template <typename T>
@@ -433,14 +445,22 @@ pair<T, T> RikiuotiStudentus3(T& studentai) {
             getline(input, pav);
         while (!input.eof()) {
             Studentas naujasStudentas;
-            input >> naujasStudentas.vardas >> naujasStudentas.pavarde;
-            for(int i = 1; i <= namuDarbuSkaicius; i++){
-                int nd;
-                input >> nd;
-                naujasStudentas.namuDarbai.push_back(nd);
-            }
-            input >> naujasStudentas.egzaminas;
-            naujasStudentas.galutinisBalas = SkaiciuotiGalutiniBala(naujasStudentas);
+           string vardas, pavarde;
+    input >> vardas >> pavarde;
+    naujasStudentas.SetVardas(vardas);
+    naujasStudentas.SetPavarde(pavarde);
+
+    for (int i = 1; i <= namuDarbuSkaicius; i++) {
+        int nd;
+        input >> nd;
+        naujasStudentas.AddNamuDarbas(nd);
+    }
+
+    int egzaminas;
+    input >> egzaminas;
+    naujasStudentas.SetEgzaminas(egzaminas);
+
+    naujasStudentas.SetGalutinisBalas(SkaiciuotiGalutiniBala(naujasStudentas));
             studentai.push_back(naujasStudentas);
         }
         input.close();
@@ -523,7 +543,6 @@ template void Testavimas(std::list<Studentas>&);
 template void IvestiDuomenis(std::vector<Studentas>&);
 
 template void IvestiDuomenis(std::list<Studentas>&);
-
 
 
 
