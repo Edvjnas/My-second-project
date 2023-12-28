@@ -11,14 +11,15 @@
 #include <chrono>
 
 using namespace std;
-
-/*struct Studentas {
+/*
+struct Studentas {
     string vardas;
     string pavarde;
     vector<int> namuDarbai;
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
 };*/
+
 class Studentas {
 private:
     std::string vardas;
@@ -26,6 +27,9 @@ private:
     std::vector<int> namuDarbai;
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
+
+    friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
+    friend std::istream& operator>>(std::istream& in, Studentas& studentas);
 
 public:
     Studentas() : egzaminas(0), galutinisBalas(0.0), galutinisBalasM(0.0) {}
@@ -89,6 +93,25 @@ public:
     void SetGalutinisBalasM(double newGalutinisBalasM) {
         galutinisBalasM = newGalutinisBalasM;
     }
+
+    Studentas(const Studentas& kitas)
+        : vardas(kitas.vardas), pavarde(kitas.pavarde), namuDarbai(kitas.namuDarbai),
+          egzaminas(kitas.egzaminas), galutinisBalas(kitas.galutinisBalas),
+          galutinisBalasM(kitas.galutinisBalasM) {}
+
+    Studentas& operator=(const Studentas& kitas) {
+        if (this != &kitas) {
+            vardas = kitas.vardas;
+            pavarde = kitas.pavarde;
+            namuDarbai = kitas.namuDarbai;
+            egzaminas = kitas.egzaminas;
+            galutinisBalas = kitas.galutinisBalas;
+            galutinisBalasM = kitas.galutinisBalasM;
+        }
+        return *this;
+    }
+
+    ~Studentas(){};
 };
 
 template <typename T>
@@ -106,8 +129,7 @@ int NamuDarbuSk(const string& pav);
 
 void klaida(int &a);
 
-int klaida1(int a);
-
+void klaida1(int &a);
 
 void klaida2(int &a);
 
@@ -151,3 +173,4 @@ bool sortMazejant(const T& a, const T& b);
 
 template <typename T>
 void Testavimas (T& studentai);
+
