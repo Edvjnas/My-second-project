@@ -360,3 +360,19 @@ Programa truputi pagreitėjo.
 | -O2         | 0.0936619                 | 0.876413333                | 9.206656667                 |
 | -O3         | 0.0972746                 | 0.893655                   | 9.4554                      |
 
+### Duomenų Įvestis
+
+#### Rankinis Įvedimas
+- **Funkcija:** `IvestiDuomenis()`
+- **Aprašymas:** Ši funkcija leidžia vartotojui įvesti studentų duomenis rankiniu būdu per terminalą.
+- **Naudojimas:** Paleidus programą, ji prašys vartotojo įvesti kiekvieno studento duomenis (vardą, pavardę, namų darbus, egzaminą) ranka.
+
+#### Automatinis Įvedimas
+- **Funkcija:** `GeneruotiStudentus()`
+- **Aprašymas:** Sugeneruoja studentų sąrašą automatiškai, pagal nustatytas taisykles.
+- **Naudojimas:** Galima sukurti atsitiktinį studentų sąrašą su atsitiktiniais duomenimis.
+
+#### Duomenų Įvedimas iš Failo
+- **Funkcija:** `FailoNuskaitymas()`
+- **Aprašymas:** Nuskaito duomenis iš tekstinio failo ir juos panaudoja programoje.
+- **Naudojimas:** Nuskaito studentų duomenis iš failo ir naudoja juos programoje.
