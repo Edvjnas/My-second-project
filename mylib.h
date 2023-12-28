@@ -20,7 +20,15 @@ struct Studentas {
     double galutinisBalas, galutinisBalasM;
 };*/
 
-class Studentas {
+class Zmogus {
+public:
+    virtual ~Zmogus() {}
+
+    virtual const std::string& GetVardas() const = 0;
+    virtual const std::string& GetPavarde() const = 0;
+};
+
+class Studentas : public Zmogus {
 private:
     std::string vardas;
     std::string pavarde;
@@ -32,23 +40,22 @@ private:
     friend std::ostream& Ekranas(std::ostream& out, const Studentas& studentas);
     friend std::istream& Rankinis(std::istream& in, Studentas& studentas);
 
+
 public:
     Studentas() : egzaminas(0), galutinisBalas(0.0), galutinisBalasM(0.0) {}
     Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& namuDarbai, int egzaminas)
         : vardas(vardas), pavarde(pavarde), namuDarbai(namuDarbai), egzaminas(egzaminas),
           galutinisBalas(0.0), galutinisBalasM(0.0) {}
-    std::vector<Studentas> GeneruotiStudentus(int studentuSkaicius, const std::string& failoPavadinimas, int namuDarbuSkaicius);
 
-    const std::string& GetVardas() const {
+    const std::string& GetVardas() const override {
         return vardas;
     }
 
+    const std::string& GetPavarde() const override {
+        return pavarde;
+    }
     void SetVardas(const std::string& newVardas) {
         vardas = newVardas;
-    }
-
-    const std::string& GetPavarde() const {
-        return pavarde;
     }
 
     void SetPavarde(const std::string& newPavarde) {
@@ -112,7 +119,7 @@ public:
         return *this;
     }
 
-    ~Studentas(){};
+    ~Studentas() {}
 };
 
 template <typename T>
