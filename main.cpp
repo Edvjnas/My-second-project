@@ -2,6 +2,9 @@
 using namespace std;
 
 int main() {
+        //Studentas studentas;
+        //Zmogus zmogus;
+        int s;
         int s;
         cout << "Pasirinkite konteinerio tipa (1 - vector, 2 - list): ";
     int containerType;
