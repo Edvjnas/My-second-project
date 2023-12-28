@@ -28,8 +28,9 @@ private:
     int egzaminas;
     double galutinisBalas, galutinisBalasM;
 
-    friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
-    friend std::istream& operator>>(std::istream& in, Studentas& studentas);
+    friend std::ostream& Failas(std::ostream& out, const Studentas& studentas);
+    friend std::ostream& Ekranas(std::ostream& out, const Studentas& studentas);
+    friend std::istream& Rankinis(std::istream& in, Studentas& studentas);
 
 public:
     Studentas() : egzaminas(0), galutinisBalas(0.0), galutinisBalasM(0.0) {}
