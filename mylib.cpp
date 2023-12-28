@@ -1,6 +1,41 @@
 #include "mylib.h"
 
 using namespace std;
+std::ostream& operator<<(ostream& out, const Studentas& studentas) {
+    out << "Vardas: " << studentas.vardas << ", Pavarde: " << studentas.pavarde << endl;
+    out << "Namu darbai: ";
+    for (int nd : studentas.namuDarbai) {
+        out << nd << " ";
+    }
+    out << endl;
+    out << "Egzaminas: " << studentas.egzaminas << endl;
+    out << "Galutinis balas: " << studentas.galutinisBalas << endl;
+    out << "Galutinis balas (Mediana): " << studentas.galutinisBalasM << endl;
+    return out;
+}
+
+std::istream& operator>>(istream& in, Studentas& studentas) {
+    cout << "Iveskite studento varda: ";
+    in >> studentas.vardas;
+    cout << "Iveskite studento pavarde: ";
+    in >> studentas.pavarde;
+
+    studentas.namuDarbai.clear();
+    int pazymys;
+    cout << "Iveskite namu darbu rezultatus (-1, jei baigete): ";
+    while (true) {
+        in >> pazymys;
+        if (pazymys == -1) {
+            break;
+        }
+        studentas.namuDarbai.push_back(pazymys);
+    }
+
+    cout << "Iveskite egzamino rezultata: ";
+    in >> studentas.egzaminas;
+
+    return in;
+}
 
 template <typename T>
     bool sortDidejant(const T& a, const T& b) {
@@ -417,9 +452,9 @@ pair<T, T> RikiuotiStudentus3(T& studentai) {
         output << setw(10) << "Egz" << endl;
         for (int i = 0; i < studentuSkaicius; ++i) {
         Studentas naujasStudentas;
-        naujasStudentas.SetVardas(GeneruotiVarda(i)); 
+        naujasStudentas.SetVardas(GeneruotiVarda(i));
         naujasStudentas.SetPavarde(GeneruotiPavarde(i));
-        naujasStudentas.SetNamuDarbai(std::vector<int>(namuDarbuSkaicius)); 
+        naujasStudentas.SetNamuDarbai(std::vector<int>(namuDarbuSkaicius));
         for (int j = 1; j <= namuDarbuSkaicius; j++) {
             naujasStudentas.AddNamuDarbas(distribution(mt));
         }
@@ -491,7 +526,7 @@ void Testavimas(T& studentai) {
         sortingFunction = SortVardas;
     }
 
-    for (int i = 1000; i <= 1000; i = i * 10) {
+    for (int i = 1000000; i <= 1000000; i = i * 10) {
         T studentaiContainer;
         chrono::duration<double> suma = chrono::duration<double>::zero();
         auto start = std::chrono::high_resolution_clock::now();
