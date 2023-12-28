@@ -363,7 +363,7 @@ Programa truputi pagreitėjo.
 ### Duomenų įvestis
 
 #### Rankinis įvedimas
-- **Funkcija:** `IvestiDuomenis()`
+- **Funkcija:** `Rankinis()`
 - **Aprašymas:** Ši funkcija leidžia vartotojui įvesti studentų duomenis rankiniu būdu per terminalą.
 - **Naudojimas:** Paleidus programą, ji prašys vartotojo įvesti kiekvieno studento duomenis (vardą, pavardę, namų darbus, egzaminą) ranka.
 
@@ -380,12 +380,12 @@ Programa truputi pagreitėjo.
 ### Duomenų išvestis
 
 #### Išvedimas į ekraną
-- **Funkcija:**  `SpausdintiRezultatus()`
+- **Funkcija:**  `Ekranas()`
 - **Aprašymas:** Atspausdina studentų duomenis arba rezultatus į konsolę.
 - **Naudojimas:** Atspausdina studentų sąrašą su jų duomenimis.
 
 #### Išvedimas į failą
-- **Funkcija:** `SpausdintiStudentus()`
+- **Funkcija:** `Failas()`
 - **Aprašymas:** Išsaugo studentų duomenis arba rezultatus į tekstinius failus.
 - **Naudojimas:** Išsaugo studentų sąrašą su jų duomenimis į failą.
 
