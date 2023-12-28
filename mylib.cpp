@@ -1,7 +1,7 @@
 #include "mylib.h"
 
 using namespace std;
-std::ostream& operator<<(ostream& out, const Studentas& studentas) {
+std::ostream& Failas(ostream& out, const Studentas& studentas) {
     out << "Vardas: " << studentas.vardas << ", Pavarde: " << studentas.pavarde << endl;
     out << "Namu darbai: ";
     for (int nd : studentas.namuDarbai) {
@@ -14,28 +14,76 @@ std::ostream& operator<<(ostream& out, const Studentas& studentas) {
     return out;
 }
 
-std::istream& operator>>(istream& in, Studentas& studentas) {
-    cout << "Iveskite studento varda: ";
-    in >> studentas.vardas;
-    cout << "Iveskite studento pavarde: ";
-    in >> studentas.pavarde;
+std::ostream& Ekranas(ostream& cout, const Studentas& studentas) {
+    cout << "Vardas: " << studentas.vardas << ", Pavarde: " << studentas.pavarde << endl;
+    cout << "Namu darbai: ";
+    for (int nd : studentas.namuDarbai) {
+        cout << nd << " ";
+    }
+    cout << endl;
+    cout << "Egzaminas: " << studentas.egzaminas << endl;
+    cout << "Galutinis balas: " << studentas.galutinisBalas << endl;
+    cout << "Galutinis balas (Mediana): " << studentas.galutinisBalasM << endl;
+    return cout;
+}
 
-    studentas.namuDarbai.clear();
-    int pazymys;
-    cout << "Iveskite namu darbu rezultatus (-1, jei baigete): ";
+std::istream& Rankinis(std::istream& in, std::vector<Studentas>& studentai) {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> distribution(1, 10);
+
+    Studentas naujasStudentas;
+    std::string vardas, pavarde;
+    std::cout << "Iveskite studento varda: ";
+    in >> vardas;
+    naujasStudentas.SetVardas(vardas);
+
+    std::cout << "Iveskite studento pavarde: ";
+    in >> pavarde;
+    naujasStudentas.SetPavarde(pavarde);
+
+    naujasStudentas.ClearNamuDarbai();
+
+    int nd;
+    std::cout << "Iveskite namu darbu tarpinius rezultatus (-1, jei baigete ir -2, jei norite, kad namu darbu balai butu sugeneruoti atsitiktinai): ";
     while (true) {
-        in >> pazymys;
-        if (pazymys == -1) {
+        in >> nd;
+        klaida(nd);
+        if (nd == -1) {
             break;
         }
-        studentas.namuDarbai.push_back(pazymys);
+        if (nd == -2){
+            int n=0;
+            std::cout << "Iveskite kiek namu darbu balu dar sugeneruoti: " << std::endl;
+            in >> n;
+            klaida3(n);
+            for (int i = 1; i <= n; i++){
+                nd = distribution(mt);
+                naujasStudentas.AddNamuDarbas(nd);
+                std::cout << "(" << nd << ")" << std::endl;
+            }
+            break;
+        }
+        naujasStudentas.AddNamuDarbas(nd);
     }
 
-    cout << "Iveskite egzamino rezultata: ";
-    in >> studentas.egzaminas;
+    int egzaminas;
+    std::cout << "Iveskite egzamino rezultata (-2, jei norite, kad ji sugeneruotu atsitiktinai): ";
+    in >> egzaminas;
+    naujasStudentas.SetEgzaminas(egzaminas);
+    if(naujasStudentas.GetEgzaminas() == -2){
+        naujasStudentas.SetEgzaminas(distribution(mt));
+        std::cout << "(" << naujasStudentas.GetEgzaminas() << ")" << std::endl;
+    }
+
+    naujasStudentas.SetGalutinisBalas(SkaiciuotiGalutiniBala(naujasStudentas));
+    naujasStudentas.SetGalutinisBalasM(SkaiciuotiGalutiniBalaM(naujasStudentas));
+
+    studentai.push_back(naujasStudentas);
 
     return in;
 }
+
 
 template <typename T>
     bool sortDidejant(const T& a, const T& b) {
@@ -578,8 +626,6 @@ template void Testavimas(std::list<Studentas>&);
 template void IvestiDuomenis(std::vector<Studentas>&);
 
 template void IvestiDuomenis(std::list<Studentas>&);
-
-
 
 
 
