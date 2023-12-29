@@ -389,3 +389,11 @@ Programa truputi pagreitėjo.
 - **Aprašymas:** Išsaugo studentų duomenis arba rezultatus į tekstinius failus.
 - **Naudojimas:** Išsaugo studentų sąrašą su jų duomenimis į failą.
 
+### v1.5 aprašymas
+#### Atlikti pakeitimai:
+- Iš turimos vienos klasės buvo padarytos dvi naujos klasės. Viena abstrakti bazinė klasė **Zmogus**, o kita - pirmos klasės išvestinė(derived) klasė **Studentas**.
+- **Studentas** klasė yra gerokai platesnė, turi daugiau metodų ir operatorių.
+- **Zmogus** klasės objektų kūrimas yra negalimas. Objektus ji gali gauti tik iš savo išvestinės klasės **Studentas**.
+- Abi klasės turi savo nuosavus destruktorius. Tačiau tik **Studentas** klasė turi kopijavimo konstruktorių ir priskyrimo operatorių, kadangi **Zmogus** klasė yra abstrakti ir negali kurti objektų pati.
+- 
+
