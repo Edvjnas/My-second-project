@@ -396,4 +396,5 @@ Programa truputi pagreitėjo.
 - **Zmogus** klasės objektų kūrimas yra negalimas. Objektus ji gali gauti tik iš savo išvestinės klasės **Studentas**.
 - Abi klasės turi savo nuosavus destruktorius. Tačiau tik **Studentas** klasė turi kopijavimo konstruktorių ir priskyrimo operatorių, kadangi **Zmogus** klasė yra abstrakti ir negali kurti objektų pati.
 - Palaikoma "Rule of three" taisyklė.
+- Išlaikyti įvesties ir išvesties operatoriai per friend funkcijas **Studentas** klasėje.
 
