@@ -182,7 +182,7 @@ gautas optimaliausias variantas.
 
 **v.pradinė (pradinė versija):** Ši versija atspindi pirminį programos variantą, kuris atitiko pagrindinius reikalavimus - gauna vartotojo įvestį dėl studentų duomenų, skaičiuoja galutinius pažymius naudojant vidurkį, tvarko nežinomą namų darbų rezultatų skaičių ir leidžia tiek rankinę įvestį, tiek failų įvedimą/išvedimą.   
 **v0.1 (pirmas atnaujinimas):** Ši atnaujinta versija papildo pradinį kodo variantą. Ji gali atlikti pažymių skaičiavimą naudojant medianą. Pertvarkytas kodas, t.y. kodas išskirstytas į mylib.h, mylib.cpp ir main.cpp failus dėl tvarkos. Įgyvendintas išimčių valdymas. Pataisytas išvedimo formatavimas, kad būtų tvarkingesnis duomenų rodymas. Pridėtas rūšiavimas pagal vardą.  
-**v0.2 (antras atnaujimas):** Ši atnaujinta versija generuoja skirtingo dydžio failus su atsitiktiniais studentų duomenimis, rūšiuoja studentus į dvi skirtingas kategorijas: "genijai" ir "vargšiukai" ir matuoja programos veikimo laiką.
+**v0.2 (antras atnaujimas):** Ši atnaujinta versija generuoja skirtingo dydžio failus su atsitiktiniais studentų duomenimis, rūšiuoja studentus į dvi skirtingas kategorijas: "genijai" ir "vargšiukai" ir matuoja programos veikimo laiką.  
 **v0.3 (trečias atnaujinimas):** Ši atnaujinta versija leidžia vartotojui pasirinkti norimą konteinerį (list arba vector), kad tai pasiekti buvo pridėti templates. Buvo matuojama programos sparta su vector ir list konteineriais bei lyginami rezultatai.  
 **v1.0 (ketvirtas atnaujinimas):** Ši atnaujinta versija turi tris skirtingas studentų rikiavimo į dvi grupes strategijas, su visomis strategijomis buvo išmatuotas laikas ir padarytos išvados.
 
@@ -398,3 +398,22 @@ Programa truputi pagreitėjo.
 - Palaikoma "Rule of three" taisyklė.
 - Išlaikyti įvesties ir išvesties operatoriai per friend funkcijas **Studentas** klasėje.
 
+  
+**v1.1:** Ši versija iš esmės daro tą patį, tačiau viskas yra padaryta jau nebe su struct Studentas, bet su klase Studentas. Buvo išmatuoti laikai, palyginta, kuri versija veikia greičiau. Taip pat išbandyti ir ištestuoti flagų O1, O2, O3 greičiai su šia programa.   
+**v1.2:** Ši atnaujinta versija realizuoja "Rule of three" taisyklę bei įvesties ir išvesties operatorius.  
+**v1.5:** Ši atnaujinta versija prideda prie jau turėtos Studentas klasės naują bazinę abstrakčią klasę pavadinimu žmogus. Principas kodo išlieka tas pats, taip pat išlaikyta ir rule of three taisyklė bei išvesties ir įvesties operatoriai.  
+**v2.0:** Ši atnaujinta versija leidžia vartotojui parsisiųsti programą ir ją kompiliuoti savo kompiuteryje. Yra pateikti CMakeLists.txt, RUNME.bat failai, kurie padės pasiekti programos paleidimą.  
+
+### Įdiegimas
+
+1. Instaliuokite CMake programą, jei jos dar neturite.
+2. Parsisiųskite programos kodą iš repozitorijos.
+3. Atidarykite aplanką ir paspauskite ant RUNME.bat failo.  
+4. Atidarykite debug aplanką.  
+5. Spauskite ant failo ManoPradinisProjektas.  
+
+### Kaip naudotis
+
+1. Paleiskite programą.
+2. Pasirinkite norimą veiksmą - įveskite duomenis rankiniu būdu, nuskaitykite iš failo arba naudokite funkcijas.
+3. Sekite programos pateiktus nurodymus ir įvedimo laukus.
