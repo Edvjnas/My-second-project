@@ -1,5 +1,4 @@
 #include "mylib.h"
-
 using namespace std;
 std::ostream& Failas(ostream& out, const Studentas& studentas) {
     out << "Vardas: " << studentas.vardas << ", Pavarde: " << studentas.pavarde << endl;
@@ -574,7 +573,7 @@ void Testavimas(T& studentai) {
         sortingFunction = SortVardas;
     }
 
-    for (int i = 1000000; i <= 1000000; i = i * 10) {
+    for (int i = 10000; i <= 10000; i = i * 10) {
         T studentaiContainer;
         chrono::duration<double> suma = chrono::duration<double>::zero();
         auto start = std::chrono::high_resolution_clock::now();
@@ -626,7 +625,6 @@ template void Testavimas(std::list<Studentas>&);
 template void IvestiDuomenis(std::vector<Studentas>&);
 
 template void IvestiDuomenis(std::list<Studentas>&);
-
 
 
 
